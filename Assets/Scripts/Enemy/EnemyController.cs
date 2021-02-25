@@ -26,6 +26,7 @@ public class EnemyController : MonoBehaviour
         CrystalController crystal = CrystalController.GetInstance();
         if (crystal != null)
             mainTarget = crystal.transform.position;
+        else Debug.LogError("No instance of crystal was found.");
     }
 
     private void Update()

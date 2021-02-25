@@ -1,75 +1,80 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(CapsuleCollider))]
 public class TurretPlacement : MonoBehaviour
 {
     [SerializeField] private Color validPlacementColor;
     [SerializeField] private Color invalidPlacementColor;
 
-    [SerializeField] private Vector3 colliderOffset;
-    [SerializeField] private float colliderRadius;
-    [SerializeField] private float colliderHeight;
-    [SerializeField] private float floorMargin;
-
-
     private ParticleSystem[] particleSystems;
     private ParticleSystem.MainModule[] particleModules;
 
+    private LinkedList<Collider> inboundColliders = new LinkedList<Collider>();
+    private Color currentColour;
     private bool isPlacing = false;
-    private bool lastValidPlacement = false;
 
     // Start is called before the first frame update
     void Start()
     {
+        currentColour = validPlacementColor;
         particleSystems = GetComponentsInChildren<ParticleSystem>();
         if (particleSystems != null)
         {
             particleModules = new ParticleSystem.MainModule[particleSystems.Length];
             for (int i = 0; i < particleModules.Length; i++) particleModules[i] = particleSystems[i].main;
         }
+        else Debug.LogError("No particle system detected.");
     }
 
-    private void LateUpdate()
+    private void FixedUpdate()
     {
-        if (particleSystems != null && isPlacing)
+        if (isPlacing && particleModules != null)
         {
-            if (particleSystems[0].isStopped)
+            currentColour = inboundColliders.Count == 0 ? validPlacementColor : invalidPlacementColor;
+            if (!particleModules[0].startColor.color.Equals(currentColour))
             {
-                for (int i = 0; i < particleSystems.Length; i++)
-                    particleSystems[i].Play();
+                Debug.Log("Changing colour");
+                for (int i = 0; i < particleModules.Length; i++) particleModules[i].startColor = currentColour;
             }
         }
-
-        isPlacing = false;
     }
 
-    public void PlaceTurret()
+    private void OnTriggerEnter(Collider other)
     {
+        inboundColliders.AddFirst(other);
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        try
+        {
+            inboundColliders.Remove(other);
+        } catch (Exception e)
+        {
+            Debug.Log(e);
+        }
+    }
+
+    public void PlaceTurretOverlay()
+    {
+        if (isPlacing) return;
+
         isPlacing = true;
-
         if (particleSystems != null)
-        {
-            bool validPlacement = IsValidPlacement();
-
-            if (validPlacement != lastValidPlacement)
-            {
-                for (int i = 0; i < particleModules.Length; i++)
-                {
-                    if (validPlacement) particleModules[i].startColor = validPlacementColor;
-                    else particleModules[i].startColor = invalidPlacementColor;
-                }
-            }
-
-            lastValidPlacement = validPlacement;
-        }
+            for (int i = 0; i < particleSystems.Length; i++) particleSystems[i].Play();
     }
 
-    private bool IsValidPlacement()
+    public void RemoveTurretOverlay()
     {
-        Vector3 start = transform.position + colliderOffset - Vector3.up * (colliderHeight / 2.0f) + Vector3.up * floorMargin;
-        Vector3 end = transform.position + colliderOffset + Vector3.up * (colliderHeight / 2.0f);
-
-        return Physics.CheckCapsule(start, end, colliderRadius);
+        isPlacing = false;
+        if (particleSystems != null)
+            for (int i = 0; i < particleSystems.Length; i++)
+            {
+                particleSystems[i].Stop();
+                particleSystems[i].Clear();
+            }
     }
 }

@@ -1,36 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5576044083996048234
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6660963320658567735}
-  m_Layer: 0
-  m_Name: ItemOrigin
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6660963320658567735
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5576044083996048234}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 8532141269045257958}
-  m_Father: {fileID: 5947625393719503850}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5947625393234072968
 GameObject:
   m_ObjectHideFlags: 0
@@ -190,7 +159,7 @@ Transform:
   m_LocalScale: {x: 0.33, y: 0.33, z: 0.33}
   m_Children:
   - {fileID: 5947625393234072969}
-  - {fileID: 6660963320658567735}
+  - {fileID: 8532141269045257958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -228,6 +197,8 @@ MonoBehaviour:
   gravity: 3
   playerAnimator: {fileID: 5947625393234072981}
   turretPlacement: {fileID: 2454310808657391526}
+  turretPlacementDistance: 0.5
+  turretPlacementSpeed: 10
 --- !u!114 &5947625393719503849
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -245,11 +216,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 6660963320658567735}
+    m_TransformParent: {fileID: 5947625393719503850}
     m_Modifications:
     - target: {fileID: 2132096636702367328, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2132096636702367328, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -269,15 +240,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2132096636702367328, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2132096636702367328, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2132096636702367328, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2132096636702367328, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

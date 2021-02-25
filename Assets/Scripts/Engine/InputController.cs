@@ -18,25 +18,28 @@ public class InputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.anyKey)
+        direction.x = Input.GetAxisRaw("Horizontal");
+        direction.y = Input.GetAxisRaw("Vertical");
+
+        actionButton = Input.GetKey(KeyCode.Space);
+        actionButton_D = Input.GetKeyDown(KeyCode.Space);
+        actionButton_U = Input.GetKeyUp(KeyCode.Space);
+
+
+        switch (currentState)
         {
-            direction.x = Input.GetAxis("Horizontal");
-            direction.y = Input.GetAxis("Vertical");
-
-            actionButton = Input.GetKey(KeyCode.Space);
-            actionButton_D = Input.GetKeyDown(KeyCode.Space);
-            actionButton_U = Input.GetKeyUp(KeyCode.Space);
-
-
-            switch (currentState)
-            {
-                case State.GAMEPLAY:
-                    player.Move(direction);
-                    if (actionButton) player.PlaceTurret();
-                    break;
-                case State.MENU:
-                    break;
-            }
+            case State.GAMEPLAY:
+                GameplayState();
+                break;
+            case State.MENU:
+                break;
         }
+    }
+
+    private void GameplayState()
+    {
+        if (direction.magnitude > 0.0f) player.Move(direction);
+        if (actionButton_D) player.HoldTurretPlacement();
+        if (actionButton_U) player.ReleaseTurretPlacement();
     }
 }
