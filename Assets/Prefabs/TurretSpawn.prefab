@@ -4906,10 +4906,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  m_Radius: 0.25
-  m_Height: 1
+  m_Radius: 0.5
+  m_Height: 1.5
   m_Direction: 1
-  m_Center: {x: 0, y: 0.55, z: 0}
+  m_Center: {x: 0, y: 0.85, z: 0}
 --- !u!114 &5328195356632766240
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4924,7 +4924,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validPlacementColor: {r: 0, g: 0.40784314, b: 0.5019608, a: 1}
   invalidPlacementColor: {r: 1, g: 0, b: 0, a: 1}
-  particleMaterial: {fileID: 2100000, guid: 99614856b502e4841b7d11ce2e405018, type: 2}
 --- !u!1 &2132096637640790295
 GameObject:
   m_ObjectHideFlags: 0

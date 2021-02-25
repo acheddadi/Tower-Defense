@@ -37,24 +37,34 @@ public class TurretPlacement : MonoBehaviour
             if (!particleModules[0].startColor.color.Equals(currentColour))
             {
                 Debug.Log("Changing colour");
-                for (int i = 0; i < particleModules.Length; i++) particleModules[i].startColor = currentColour;
+                for (int i = 0; i < particleModules.Length; i++)
+                {
+                    particleModules[i].startColor = currentColour;
+                    particleSystems[i].Simulate(particleSystems[i].time, true, true);
+                    particleSystems[i].Play();
+                }
             }
         }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        inboundColliders.AddFirst(other);
+        if (other.GetComponent<PlayerController>() == null)
+            inboundColliders.AddFirst(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        try
+        if (other.GetComponent<PlayerController>() == null)
         {
-            inboundColliders.Remove(other);
-        } catch (Exception e)
-        {
-            Debug.Log(e);
+            try
+            {
+                inboundColliders.Remove(other);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
         }
     }
 
