@@ -53,18 +53,21 @@ public class TurretPlacement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        inboundColliders.AddFirst(other);
+        if (!other.isTrigger) inboundColliders.AddFirst(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        try
+        if (!other.isTrigger)
         {
-            inboundColliders.Remove(other);
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e);
+            try
+            {
+                inboundColliders.Remove(other);
+            }
+            catch (Exception e)
+            {
+                Debug.Log(e);
+            }
         }
     }
 

@@ -9,6 +9,7 @@ public class TurretController : MonoBehaviour
     [SerializeField] private float lookAtSpeed = 2.0f;
     [SerializeField] private Transform childToTilt;
     [SerializeField] private float firingRate = 2.0f;
+    [SerializeField] private GameObject projectilePrefab;
 
     private Animator animator;
 
@@ -51,15 +52,16 @@ public class TurretController : MonoBehaviour
         firingTimer = 0.0f;
     }
 
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" && !other.isTrigger)
             inboundEnemy.AddLast(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" && !other.isTrigger)
         {
             try
             {
@@ -71,5 +73,14 @@ public class TurretController : MonoBehaviour
         }
 
         firingTimer = 0.0f;
+    }
+    public void FireProjectile()
+    {
+        if (projectilePrefab != null)
+        {
+            GameObject projectile = Instantiate(projectilePrefab);
+            projectile.transform.rotation = childToTilt.rotation;
+            projectile.transform.position = childToTilt.position + childToTilt.forward * 0.5f;
+        }
     }
 }

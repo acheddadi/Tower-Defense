@@ -91,8 +91,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2295678199486946847}
   - component: {fileID: 1481740920871666848}
-  - component: {fileID: 1481740920871666850}
   - component: {fileID: 1481740920871666851}
+  - component: {fileID: 1481740920871666850}
   m_Layer: 0
   m_Name: Turret
   m_TagString: Turret
@@ -129,21 +129,6 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1481740920871666850
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1481740920871666853}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 622a28462d23c564b93148d4ba2bee44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookAtSpeed: 3
-  childToTilt: {fileID: 2545782200521803733}
-  firingRate: 2
 --- !u!95 &1481740920871666851
 Animator:
   serializedVersion: 3
@@ -163,6 +148,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &1481740920871666850
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1481740920871666853}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 622a28462d23c564b93148d4ba2bee44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lookAtSpeed: 3
+  childToTilt: {fileID: 2545782200521803733}
+  firingRate: 2
+  projectilePrefab: {fileID: 6543042030012668685, guid: 48f57a973b5b46f439ec075186db4dc2, type: 3}
 --- !u!1 &2545782200521803732
 GameObject:
   m_ObjectHideFlags: 0
