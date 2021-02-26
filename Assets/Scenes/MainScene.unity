@@ -396,7 +396,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1481740920871666853, guid: 4f1f2b47577fcc14e8948db7c5ec8d43, type: 3}
       propertyPath: m_Name
-      value: Cannon-Alternative
+      value: Turret
       objectReference: {fileID: 0}
     - target: {fileID: 2295678199486946847, guid: 4f1f2b47577fcc14e8948db7c5ec8d43, type: 3}
       propertyPath: m_RootOrder

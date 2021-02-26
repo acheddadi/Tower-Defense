@@ -4924,6 +4924,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   validPlacementColor: {r: 0, g: 0.40784314, b: 0.5019608, a: 1}
   invalidPlacementColor: {r: 1, g: 0, b: 0, a: 1}
+  turretPrefab: {fileID: 1481740920871666853, guid: 4f1f2b47577fcc14e8948db7c5ec8d43, type: 3}
 --- !u!1 &2132096637640790295
 GameObject:
   m_ObjectHideFlags: 0

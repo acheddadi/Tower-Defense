@@ -8,6 +8,7 @@ public class TurretPlacement : MonoBehaviour
 {
     [SerializeField] private Color validPlacementColor;
     [SerializeField] private Color invalidPlacementColor;
+    [SerializeField] private GameObject turretPrefab;
 
     private ParticleSystem[] particleSystems;
     private ParticleSystem.MainModule[] particleModules;
@@ -15,6 +16,7 @@ public class TurretPlacement : MonoBehaviour
     private LinkedList<Collider> inboundColliders = new LinkedList<Collider>();
     private Color currentColour;
     private bool isPlacing = false;
+    private bool isValidPlacement = false;
 
     // Start is called before the first frame update
     void Start()
@@ -33,7 +35,9 @@ public class TurretPlacement : MonoBehaviour
     {
         if (isPlacing && particleModules != null)
         {
-            currentColour = inboundColliders.Count == 0 ? validPlacementColor : invalidPlacementColor;
+            isValidPlacement = inboundColliders.Count == 0;
+            currentColour = isValidPlacement ? validPlacementColor : invalidPlacementColor;
+
             if (!particleModules[0].startColor.color.Equals(currentColour))
             {
                 Debug.Log("Changing colour");
@@ -49,22 +53,18 @@ public class TurretPlacement : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.GetComponent<PlayerController>() == null)
-            inboundColliders.AddFirst(other);
+        inboundColliders.AddFirst(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.GetComponent<PlayerController>() == null)
+        try
         {
-            try
-            {
-                inboundColliders.Remove(other);
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e);
-            }
+            inboundColliders.Remove(other);
+        }
+        catch (Exception e)
+        {
+            Debug.Log(e);
         }
     }
 
@@ -86,5 +86,12 @@ public class TurretPlacement : MonoBehaviour
                 particleSystems[i].Stop();
                 particleSystems[i].Clear();
             }
+        
+        if (isValidPlacement)
+        {
+            GameObject turret = Instantiate(turretPrefab);
+            turret.transform.position = transform.position;
+            turret.transform.rotation = transform.rotation;
+        }
     }
 }

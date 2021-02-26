@@ -3,12 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(Animator))]
 public class TurretController : MonoBehaviour
 {
     [SerializeField] private float lookAtSpeed = 2.0f;
     [SerializeField] private Transform childToTilt;
+    [SerializeField] private float firingRate = 2.0f;
+
+    private Animator animator;
 
     private LinkedList<Collider> inboundEnemy = new LinkedList<Collider>();
+    private float firingTimer = 0.0f;
+    private RaycastHit raycastHit;
+
+    private void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -19,30 +30,36 @@ public class TurretController : MonoBehaviour
             Quaternion swivelRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(direction, Vector3.up).normalized);
             transform.rotation = Quaternion.Slerp(transform.rotation, swivelRotation, lookAtSpeed * Time.deltaTime);
 
-            if (childToTilt != null)
+            direction = inboundEnemy.First.Value.transform.position - childToTilt.position;
+            Quaternion tiltRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(direction, childToTilt.right).normalized);
+            childToTilt.rotation = Quaternion.Slerp(childToTilt.rotation, tiltRotation, lookAtSpeed * Time.deltaTime);
+
+            if (firingTimer > firingRate)
             {
-                direction = inboundEnemy.First.Value.transform.position - childToTilt.position;
-                Quaternion tiltRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(direction, childToTilt.right).normalized);
-                childToTilt.rotation = Quaternion.Slerp(childToTilt.rotation, tiltRotation, lookAtSpeed * Time.deltaTime);
+                Physics.Raycast(childToTilt.transform.position, childToTilt.transform.forward, out raycastHit, Mathf.Infinity);
+                if (raycastHit.collider.tag == "Enemy") Fire();
             }
+
+            firingTimer += Time.deltaTime;
         }
+
+    }
+
+    private void Fire()
+    {
+        animator.SetTrigger("Fire");
+        firingTimer = 0.0f;
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyController enemy = other.GetComponent<EnemyController>();   // Real behaviour
-        //PlayerController enemy = other.GetComponent<PlayerController>();    // Testing purposes
-
-        if (enemy != null)
+        if (other.tag == "Enemy")
             inboundEnemy.AddLast(other);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        EnemyController enemy = other.GetComponent<EnemyController>();   // Real behaviour
-        //PlayerController enemy = other.GetComponent<PlayerController>();    // Testing purposes
-
-        if (enemy != null)
+        if (other.tag == "Enemy")
         {
             try
             {
@@ -52,5 +69,7 @@ public class TurretController : MonoBehaviour
                 Debug.Log("Undocumented enemy just exited my trigger!\n" + e);
             }
         }
+
+        firingTimer = 0.0f;
     }
 }

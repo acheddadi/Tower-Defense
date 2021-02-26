@@ -37,7 +37,11 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         playerAnimator.SetMoving(isWalking);
-        turretPlacement.transform.position =
+
+        if (Vector3.Dot(transform.position - turretPlacement.transform.position, transform.position - turretPlacementTarget) < 0)
+            turretPlacement.transform.position = turretPlacementTarget;
+
+        else turretPlacement.transform.position =
             Vector3.Lerp(turretPlacement.transform.position, turretPlacementTarget, Time.deltaTime * turretPlacementSpeed);
     }
 

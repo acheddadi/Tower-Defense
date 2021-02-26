@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 5947625393234072981}
   m_Layer: 0
   m_Name: Sprite
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -142,7 +142,7 @@ GameObject:
   - component: {fileID: 5947625393719503849}
   m_Layer: 0
   m_Name: Player
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,6 +218,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5947625393719503850}
     m_Modifications:
+    - target: {fileID: 2132096636679254785, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 2132096636702367328, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -265,6 +269,14 @@ PrefabInstance:
     - target: {fileID: 2132096636702367331, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
       propertyPath: m_Name
       value: TurretSpawn
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132096636702367331, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 2132096637640790295, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cbd5626f6ce36fb4c8100942992a28ab, type: 3}

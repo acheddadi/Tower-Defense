@@ -94,8 +94,8 @@ GameObject:
   - component: {fileID: 1481740920871666850}
   - component: {fileID: 1481740920871666851}
   m_Layer: 0
-  m_Name: Cannon-Alternative
-  m_TagString: Untagged
+  m_Name: Turret
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lookAtSpeed: 3
   childToTilt: {fileID: 2545782200521803733}
+  firingRate: 2
 --- !u!95 &1481740920871666851
 Animator:
   serializedVersion: 3
@@ -173,7 +174,7 @@ GameObject:
   - component: {fileID: 2545782200521803733}
   m_Layer: 0
   m_Name: Tilt
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -206,7 +207,7 @@ GameObject:
   - component: {fileID: 4612598010269070205}
   m_Layer: 0
   m_Name: Base
-  m_TagString: Untagged
+  m_TagString: Turret
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

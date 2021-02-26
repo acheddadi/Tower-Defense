@@ -61,10 +61,9 @@ public class EnemyController : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        EnemyController enemy = other.GetComponent<EnemyController>();
         HealthController target = other.GetComponent<HealthController>();
 
-        if (enemy == null && target != null)
+        if (target != null && other.tag != "Enemy")
             attackTarget = target;
     }
 }
