@@ -35,7 +35,7 @@ public class TurretPlacement : MonoBehaviour
     {
         if (isPlacing && particleModules != null)
         {
-            isValidPlacement = inboundColliders.Count == 0;
+            isValidPlacement = inboundColliders.Count == 0 && Physics.Raycast(transform.position + Vector3.up, Vector3.down, Mathf.Infinity);
             currentColour = isValidPlacement ? validPlacementColor : invalidPlacementColor;
 
             if (!particleModules[0].startColor.color.Equals(currentColour))

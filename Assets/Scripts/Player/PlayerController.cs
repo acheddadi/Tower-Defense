@@ -20,7 +20,6 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 moveDirection;
     private bool isPlacingTurret = false;
-    private bool isWalking = false;
 
     private RaycastHit raycastHit;
     private Vector3 turretPlacementTarget;
@@ -36,8 +35,6 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        playerAnimator.SetMoving(isWalking);
-
         if (Vector3.Dot(transform.position - turretPlacement.transform.position, transform.position - turretPlacementTarget) < 0)
             turretPlacement.transform.position = turretPlacementTarget;
 
@@ -56,13 +53,16 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        isWalking = false;
+        if (playerAnimator != null) playerAnimator.SetMoving(false);
     }
 
     public void Move(Vector2 direction)
     {
         if (playerAnimator != null)
+        {
+            playerAnimator.SetMoving(true);
             playerAnimator.SetBlend(direction.normalized);
+        }
 
         moveDirection = Vector3.zero;
         moveDirection -= rightDirection * direction.x;
@@ -70,7 +70,6 @@ public class PlayerController : MonoBehaviour
         moveDirection = moveDirection.normalized;
 
         characterController.Move(moveDirection * playerSpeed * Time.deltaTime);
-        isWalking = true;
     }
 
     public void HoldTurretPlacement()

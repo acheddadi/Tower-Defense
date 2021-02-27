@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealthController : MonoBehaviour
 {
+    [SerializeField] private GameObject destroyPrefab;
     private float health = 100.0f;
 
     public void LoseHealth(float health)
@@ -25,6 +26,9 @@ public class HealthController : MonoBehaviour
     private void Die()
     {
         Debug.Log(name + " has fallen.");
+        if (destroyPrefab != null)
+            Instantiate(destroyPrefab, transform.position, transform.rotation);
+
         Destroy(gameObject);
     }
 }
