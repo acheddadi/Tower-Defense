@@ -38,6 +38,12 @@ public class InputController : MonoBehaviour
 
     private void GameplayState()
     {
+        if (player == null)
+        {
+            currentState = State.MENU;
+            return;
+        }
+
         if (direction.magnitude > 0.0f) player.Move(direction);
         if (actionButton_D) player.HoldTurretPlacement();
         if (actionButton_U) player.ReleaseTurretPlacement();
