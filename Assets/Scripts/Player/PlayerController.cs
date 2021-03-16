@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
 {
     [SerializeField] private float playerSpeed = 3.0f;
     [SerializeField] private float gravity = 4.0f;
-    [SerializeField] private PlayerAnimator playerAnimator;
+    [SerializeField] private SpriteAnimator spriteAnimator;
     [SerializeField] private TurretPlacement turretPlacement;
     [SerializeField] private float turretPlacementDistance = 1.0f;
     [SerializeField] private float turretPlacementSpeed = 10.0f;
@@ -53,15 +53,15 @@ public class PlayerController : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (playerAnimator != null) playerAnimator.SetMoving(false);
+        if (spriteAnimator != null) spriteAnimator.SetMoving(false);
     }
 
     public void Move(Vector2 direction)
     {
-        if (playerAnimator != null)
+        if (spriteAnimator != null)
         {
-            playerAnimator.SetMoving(true);
-            playerAnimator.SetBlend(direction.normalized);
+            spriteAnimator.SetMoving(true);
+            spriteAnimator.SetDirection(direction.normalized);
         }
 
         moveDirection = Vector3.zero;

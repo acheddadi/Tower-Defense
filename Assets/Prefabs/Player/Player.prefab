@@ -195,7 +195,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerSpeed: 2
   gravity: 3
-  playerAnimator: {fileID: 5947625393234072981}
+  spriteAnimator: {fileID: 5947625393234072981}
   turretPlacement: {fileID: 2454310808657391526}
   turretPlacementDistance: 0.5
   turretPlacementSpeed: 10

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Animator))]
-public class PlayerAnimator : MonoBehaviour
+public class SpriteAnimator : MonoBehaviour
 {
     private Animator animator;
 
@@ -13,7 +13,7 @@ public class PlayerAnimator : MonoBehaviour
         animator = GetComponent<Animator>();
     }
 
-    public void SetBlend(Vector2 direction)
+    public void SetDirection(Vector2 direction)
     {
         animator.SetFloat("XAxis", direction.x);
         animator.SetFloat("YAxis", direction.y);
@@ -22,5 +22,15 @@ public class PlayerAnimator : MonoBehaviour
     public void SetMoving(bool moving)
     {
         animator.SetBool("Moving", moving);
+    }
+
+    public void Attack()
+    {
+        animator.SetTrigger("Attack");
+    }
+
+    public void Hurt()
+    {
+        animator.SetTrigger("Hurt");
     }
 }

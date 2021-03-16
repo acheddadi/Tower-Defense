@@ -11,12 +11,14 @@ public class EnemyController : MonoBehaviour
     [SerializeField] private float attackRange = 1.0f;
     [SerializeField] private float maxChaseDistance = 5.0f;
     [SerializeField] private float chaseDelay = 1.0f;
+    [SerializeField] private SpriteAnimator spriteAnimator;
 
     private float chaseTimer = 0.0f;
 
     private Vector3 mainTarget;
     private HealthController attackTarget;
     private NavMeshAgent navMeshAgent;
+    private Vector3 spriteDirection;
 
     // Start is called before the first frame update
     void Start()
@@ -57,6 +59,19 @@ public class EnemyController : MonoBehaviour
         }
 
         chaseTimer += Time.deltaTime;
+    }
+
+    private void FixedUpdate()
+    {
+        if (spriteAnimator != null)
+        {
+            if (navMeshAgent.remainingDistance > 0.0f)
+            {
+                spriteDirection = Vector3.ProjectOnPlane(navMeshAgent.velocity, Camera.main.transform.forward).normalized;
+                spriteAnimator.SetDirection(spriteDirection);
+            }
+            spriteAnimator.SetMoving(navMeshAgent.velocity.magnitude > 0.0f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)

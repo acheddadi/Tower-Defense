@@ -10,7 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 414789398739298656}
   - component: {fileID: 4599111127537842612}
+  - component: {fileID: 3758200953100183627}
   - component: {fileID: 5353399907168637027}
+  - component: {fileID: 6155001868358464775}
   m_Layer: 0
   m_Name: Sprite
   m_TagString: Untagged
@@ -83,6 +85,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3758200953100183627
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780677806166776124}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: fcf4252ad44d29f409357970008df1a7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &5353399907168637027
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -95,6 +116,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89d2bafd7a5038f49a9d80354e4eb954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6155001868358464775
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1780677806166776124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e7af8afe7a92c94cbf6733c947fa2a2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6504806108844515932
 GameObject:
   m_ObjectHideFlags: 0
@@ -105,8 +138,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6504806108844515877}
   - component: {fileID: 6303204861905089112}
-  - component: {fileID: 575188290565693332}
   - component: {fileID: 6504806108844515928}
+  - component: {fileID: 575188290565693332}
   - component: {fileID: 6504806108844515929}
   - component: {fileID: 6504806108844515931}
   - component: {fileID: 6504806108844515930}
@@ -146,6 +179,19 @@ CapsuleCollider:
   m_Height: 1
   m_Direction: 1
   m_Center: {x: 0, y: 0.5, z: 0}
+--- !u!135 &6504806108844515928
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6504806108844515932}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &575188290565693332
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -162,19 +208,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &6504806108844515928
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6504806108844515932}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.5
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!195 &6504806108844515929
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -212,6 +245,7 @@ MonoBehaviour:
   attackRange: 0.8
   maxChaseDistance: 5
   chaseDelay: 1
+  spriteAnimator: {fileID: 6155001868358464775}
 --- !u!114 &6504806108844515930
 MonoBehaviour:
   m_ObjectHideFlags: 0
