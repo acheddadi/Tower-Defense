@@ -48,12 +48,15 @@ public class EnemyController : MonoBehaviour
                 {
                     Debug.Log("Attacking, distance of " + distance);
                     navMeshAgent.ResetPath();
+                    spriteDirection = Vector3.ProjectOnPlane(attackTarget.transform.position - transform.position, Camera.main.transform.forward).normalized;
                 }
 
                 else navMeshAgent.SetDestination(attackTarget.transform.position);
+
             }
 
             else if (mainTarget != null) navMeshAgent.SetDestination(mainTarget);
+
 
             chaseTimer = 0.0f;
         }
@@ -65,11 +68,10 @@ public class EnemyController : MonoBehaviour
     {
         if (spriteAnimator != null)
         {
-            if (navMeshAgent.remainingDistance > 0.0f)
-            {
+            if (navMeshAgent.remainingDistance > 0.1f)
                 spriteDirection = Vector3.ProjectOnPlane(navMeshAgent.velocity, Camera.main.transform.forward).normalized;
-                spriteAnimator.SetDirection(spriteDirection);
-            }
+
+            spriteAnimator.SetDirection(spriteDirection);
             spriteAnimator.SetMoving(navMeshAgent.velocity.magnitude > 0.0f);
         }
     }
