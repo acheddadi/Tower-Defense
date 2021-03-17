@@ -213,7 +213,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destroyPrefab: {fileID: 2979825379730568601, guid: 0534a37eee6a5f64aac1d2c2fe37859a, type: 3}
   defensePoints: 0
-  healthPoints: 30
+  maxHealth: 30
+  healthBar: {fileID: 0}
 --- !u!1001 &7781934142070438022
 PrefabInstance:
   m_ObjectHideFlags: 0
