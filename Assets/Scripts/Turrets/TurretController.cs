@@ -18,7 +18,6 @@ public class TurretController : MonoBehaviour
     private LinkedList<Collider> inboundEnemy = new LinkedList<Collider>();
     private RaycastHit raycastHit;
     private float firingTimer = 0.0f;
-    private bool firing = false;
 
     private void Start()
     {
@@ -56,7 +55,7 @@ public class TurretController : MonoBehaviour
             firingTimer += Time.deltaTime;
         }
 
-        else if (!firing)
+        else
         {
             if (transform.rotation != Quaternion.identity)
                 transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, (lookAtSpeed / 2.0f) * Time.deltaTime);
@@ -64,6 +63,7 @@ public class TurretController : MonoBehaviour
             if (childToTilt.rotation != Quaternion.identity)
                 childToTilt.rotation = Quaternion.Slerp(childToTilt.rotation, Quaternion.identity, (lookAtSpeed / 2.0f) * Time.deltaTime);
 
+            firingTimer = 0.0f;
         }
 
     }
@@ -72,7 +72,6 @@ public class TurretController : MonoBehaviour
     {
         animator.SetTrigger("Fire");
         firingTimer = 0.0f;
-        firing = true;
     }
 
 
@@ -109,6 +108,5 @@ public class TurretController : MonoBehaviour
             projectile.SetSpeed(projectileSpeed);
             projectile.SetDamage(projectileDamage);
         }
-        firing = false;
     }
 }

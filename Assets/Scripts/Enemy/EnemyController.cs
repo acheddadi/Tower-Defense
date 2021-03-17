@@ -39,8 +39,6 @@ public class EnemyController : MonoBehaviour
                 navMeshAgent.SetDestination(CrystalController.GetInstance().transform.position);
                 movementTimer = 0.0f;
             }
-
-            else return;
         }
 
         else

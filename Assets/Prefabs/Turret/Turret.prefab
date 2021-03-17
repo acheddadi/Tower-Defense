@@ -192,11 +192,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 622a28462d23c564b93148d4ba2bee44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lookAtSpeed: 4
+  lookAtSpeed: 5
   childToTilt: {fileID: 2545782200521803733}
-  firingRate: 2
+  firingRate: 1.5
   projectilePrefab: {fileID: 6543042030012668685, guid: 48f57a973b5b46f439ec075186db4dc2, type: 3}
-  projectileSpeed: 1.5
+  projectileSpeed: 3
   projectileDamage: 10
 --- !u!1 &2545782200521803732
 GameObject:
