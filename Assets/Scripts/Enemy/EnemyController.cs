@@ -8,14 +8,16 @@ using UnityEngine.AI;
 [RequireComponent(typeof(HealthController))]
 public class EnemyController : MonoBehaviour
 {
+    [SerializeField] private float movementDelay = 1.0f;
+    [SerializeField] private float attackDelay = 1.0f;
     [SerializeField] private float attackRange = 1.0f;
-    [SerializeField] private float maxChaseDistance = 5.0f;
-    [SerializeField] private float chaseDelay = 1.0f;
+    [SerializeField] private float attackStrength = 10.0f;
+    [SerializeField] private float giveUpChaseRange = 5.0f;
     [SerializeField] private SpriteAnimator spriteAnimator;
 
-    private float chaseTimer = 0.0f;
+    private float movementTimer = 0.0f;
+    private float attackTimer = 0.0f;
 
-    private Vector3 mainTarget;
     private HealthController attackTarget;
     private NavMeshAgent navMeshAgent;
     private Vector3 spriteDirection;
@@ -25,54 +27,68 @@ public class EnemyController : MonoBehaviour
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
 
-        CrystalController crystal = CrystalController.GetInstance();
-        if (crystal != null)
-            mainTarget = crystal.transform.position;
-        else Debug.LogError("No instance of crystal was found.");
+        if (CrystalController.GetInstance() == null) Debug.LogError("No instance of crystal was found.");
     }
 
     private void Update()
     {
-        if (chaseTimer > chaseDelay)
+        if (attackTarget == null)
         {
-            if (attackTarget != null)
+            if (CrystalController.GetInstance() != null && movementTimer > movementDelay)
             {
-                float distance = Vector3.Distance(attackTarget.transform.position, transform.position);
-                if (distance > maxChaseDistance)
-                {
-                    attackTarget = null;
-                    navMeshAgent.SetDestination(mainTarget);
-                }
-
-                else if (distance < attackRange)
-                {
-                    Debug.Log("Attacking, distance of " + distance);
-                    navMeshAgent.ResetPath();
-                    spriteDirection = Vector3.ProjectOnPlane(attackTarget.transform.position - transform.position, Camera.main.transform.forward).normalized;
-                }
-
-                else navMeshAgent.SetDestination(attackTarget.transform.position);
-
+                navMeshAgent.SetDestination(CrystalController.GetInstance().transform.position);
+                movementTimer = 0.0f;
             }
 
-            else if (mainTarget != null) navMeshAgent.SetDestination(mainTarget);
-
-
-            chaseTimer = 0.0f;
+            else return;
         }
 
-        chaseTimer += Time.deltaTime;
+        else
+        {
+            if (Vector3.Distance(attackTarget.transform.position, transform.position) < attackRange)
+            {
+                navMeshAgent.velocity = Vector3.zero;
+                navMeshAgent.ResetPath();
+
+                if (attackTimer > attackDelay)
+                {
+                    spriteDirection = Vector3.ProjectOnPlane(attackTarget.transform.position - transform.position, Camera.main.transform.forward).normalized;
+                    if (spriteAnimator != null) spriteAnimator.Attack();
+                    attackTarget.LoseHealth(attackStrength);
+                    attackTimer = 0.0f;
+                }
+
+                attackTimer += Time.deltaTime;
+            }
+
+            else if (movementTimer > movementDelay)
+            {
+                navMeshAgent.SetDestination(attackTarget.transform.position);
+                movementTimer = 0.0f;
+            }
+        }
+
+        movementTimer += Time.deltaTime;
     }
 
     private void FixedUpdate()
     {
         if (spriteAnimator != null)
         {
-            if (navMeshAgent.remainingDistance > 0.1f)
+            if (navMeshAgent.velocity.magnitude > 0.0f)
                 spriteDirection = Vector3.ProjectOnPlane(navMeshAgent.velocity, Camera.main.transform.forward).normalized;
 
             spriteAnimator.SetDirection(spriteDirection);
             spriteAnimator.SetMoving(navMeshAgent.velocity.magnitude > 0.0f);
+        }
+
+        if (attackTarget != null && Vector3.Distance(transform.position, attackTarget.transform.position) > giveUpChaseRange)
+        {
+            navMeshAgent.velocity = Vector3.zero;
+            navMeshAgent.ResetPath();
+            attackTarget = null;
+            movementTimer = 0.0f;
+            attackTimer = 0.0f;
         }
     }
 

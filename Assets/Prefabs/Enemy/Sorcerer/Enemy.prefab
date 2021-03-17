@@ -190,7 +190,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 1.5
+  m_Radius: 3
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &575188290565693332
 Rigidbody:
@@ -222,7 +222,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 120
-  m_StoppingDistance: 0.25
+  m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 0
   m_AutoRepath: 1
@@ -242,9 +242,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3450e5d8def3441b0b4804b7148b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackRange: 0.8
-  maxChaseDistance: 5
-  chaseDelay: 1
+  movementDelay: 1
+  attackDelay: 1
+  attackRange: 0.5
+  giveUpChaseRange: 5
   spriteAnimator: {fileID: 6155001868358464775}
 --- !u!114 &6504806108844515930
 MonoBehaviour:

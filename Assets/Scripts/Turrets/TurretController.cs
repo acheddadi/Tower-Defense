@@ -49,6 +49,7 @@ public class TurretController : MonoBehaviour
                 if (Physics.Raycast(childToTilt.transform.position + childToTilt.transform.forward * 0.25f, childToTilt.transform.forward, out raycastHit, Mathf.Infinity))
                 {
                     if (raycastHit.collider.tag == "Enemy") Fire();
+                    else Debug.Log(raycastHit.collider.tag + " is in the way.");
                 }
             }
 
