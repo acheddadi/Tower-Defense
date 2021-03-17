@@ -245,6 +245,7 @@ MonoBehaviour:
   movementDelay: 1
   attackDelay: 1
   attackRange: 0.5
+  attackStrength: 10
   giveUpChaseRange: 5
   spriteAnimator: {fileID: 6155001868358464775}
 --- !u!114 &6504806108844515930
@@ -260,3 +261,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destroyPrefab: {fileID: 2979825379730568601, guid: 2de1098f2dddd9243a5b7633c76453ef, type: 3}
+  defensePoints: 0
+  healthPoints: 100
