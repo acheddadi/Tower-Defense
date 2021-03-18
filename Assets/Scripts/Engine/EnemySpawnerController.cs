@@ -117,7 +117,7 @@ public class EnemySpawnerController : MonoBehaviour
 
         if (waveTimer != null)
         {
-            waveTimer.SetSecondaryValue(currentWaveTime, currentWaveMaxTime, Color.yellow, new Color(255.0f, 128.0f, 0.0f));
+            waveTimer.SetSecondaryValue(currentWaveTime, currentWaveMaxTime, Color.yellow, new Color(1.0f, 0.5f, 0.0f, 1.0f));
         }
     }
 
