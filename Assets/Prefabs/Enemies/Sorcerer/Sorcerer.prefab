@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 6504806108844515929}
   - component: {fileID: 6504806108844515931}
   - component: {fileID: 6504806108844515930}
+  - component: {fileID: 6612968973087706476}
   m_Layer: 6
   m_Name: Sorcerer
   m_TagString: Enemy
@@ -265,6 +266,23 @@ MonoBehaviour:
   defensePoints: 0
   maxHealth: 40
   healthBar: {fileID: 9067172249226739722}
+--- !u!114 &6612968973087706476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6504806108844515932}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ecdcb9aba65ef548a6c80c03f709c92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPrefabs:
+  - {fileID: 4883159721053605547, guid: fa901c596b74335409d6cf09bd6d817d, type: 3}
+  - {fileID: 3266323313498492628, guid: ea27a85e40fa0f74ebd12d25eb4d5b14, type: 3}
+  - {fileID: 3266323313498492628, guid: ea27a85e40fa0f74ebd12d25eb4d5b14, type: 3}
+  dropRadius: 0.5
 --- !u!1001 &2473554156274503172
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -31,7 +31,7 @@ public class HealthController : MonoBehaviour
     {
         Debug.Log(name + " gained " + health + " hp.");
         this.health += health;
-        this.health = Mathf.Min(this.health, 100.0f);
+        this.health = Mathf.Min(this.health, maxHealth);
 
         if (healthBar != null) healthBar.SetMainValue(this.health, maxHealth);
     }

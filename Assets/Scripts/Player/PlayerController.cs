@@ -93,4 +93,9 @@ public class PlayerController : MonoBehaviour
         isPlacingTurret = false;
         if (turretPlacement.RemoveTurretOverlay()) availableResources--;
     }
+
+    public void AddResource()
+    {
+        availableResources++;
+    }
 }
