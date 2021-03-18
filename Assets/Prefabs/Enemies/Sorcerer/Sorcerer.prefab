@@ -191,7 +191,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 2
+  m_Radius: 1.5
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &575188290565693332
 Rigidbody:
@@ -243,9 +243,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d3450e5d8def3441b0b4804b7148b03, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movementDelay: 1
+  movementDelay: 0.5
   attackDelay: 1
-  attackRange: 0.5
+  attackRange: 0.75
   attackStrength: 10
   giveUpChaseRange: 4
   spriteAnimator: {fileID: 6155001868358464775}
