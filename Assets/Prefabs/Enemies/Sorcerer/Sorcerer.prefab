@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 6504806108844515929}
   - component: {fileID: 6504806108844515931}
   - component: {fileID: 6504806108844515930}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Sorcerer
   m_TagString: Enemy
   m_Icon: {fileID: 0}

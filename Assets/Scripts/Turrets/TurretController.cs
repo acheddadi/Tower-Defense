@@ -45,7 +45,7 @@ public class TurretController : MonoBehaviour
 
             if (firingTimer > firingDelay)
             {
-                if (Physics.Raycast(childToTilt.transform.position + childToTilt.transform.forward * 0.25f, childToTilt.transform.forward, out raycastHit, Mathf.Infinity))
+                if (Physics.Raycast(childToTilt.transform.position, childToTilt.transform.forward, out raycastHit, Mathf.Infinity, LayerMask.GetMask("Enemies")))
                 {
                     if (raycastHit.collider.tag == "Enemy") Fire();
                 }
