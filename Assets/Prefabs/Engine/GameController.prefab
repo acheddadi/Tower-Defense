@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6952900295884441661
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6952900295884441662}
+  - component: {fileID: 6952900295884441663}
+  m_Layer: 0
+  m_Name: GameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6952900295884441662
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952900295884441661}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6952900295884441663
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6952900295884441661}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6cb865cdeaa6874aa5a319d1bfd1144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  welcomeMessage: "This game was developed for Dr. Miguel Garcia-Ruiz's Game Software
+    Engineering course.\n\nYour objective is to protect the Crystal from waves of
+    enemy attacks. \n\nCollect resources from downed enemies to build defensive turrets
+    throughout the level.\n\nImportant game information is listed down below. Enjoy!"
+  winMessage: 'Congratulations! You have successfully defended the crytal!
+
+
+    Your
+    hero will live on to see another day.'
+  loseMessage: 'Uh oh, it looks like your enemies have bested you.
+
+
+    Your journey
+    has ended, god save us all.'
+  creditsMessage: "This prototype was brought to you by:\n\nCheddadi, Ali\r - Scrum
+    Master, Product Owner, Programmer, Game Designer, 3D Artist\n\nBajwa, Saeed Ahmed
+    \r- Document Writer\n\nJiao, Zihan - Texture Artist\n\nAkingbehin, Samuel\r -
+    QA Tester"
+  inputController: {fileID: 0}
+  player: {fileID: 0}
+  enemySpawnerController: {fileID: 0}
+  windowPrefab: {fileID: 3573028145208399841, guid: 5abe54fe24c96ca489fc018930f2a00b, type: 3}

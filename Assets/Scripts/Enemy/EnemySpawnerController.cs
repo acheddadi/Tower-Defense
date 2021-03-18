@@ -64,8 +64,9 @@ public class EnemySpawnerController : MonoBehaviour
 
         public void UpdateHealth()
         {
-            if (head == null)
+            if (head == null || head.enemy == null)
             {
+                head = null;
                 health = maxHealth = 0.0f;
                 return;
             }
@@ -105,9 +106,13 @@ public class EnemySpawnerController : MonoBehaviour
     private float currentWaveMaxTime = 0.0f;
     private int lastSpawnPoint = -1;
 
+    private bool doneSpawning = false;
+    private bool started = false;
+    private bool wiped = false;
+
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) StartEnemySpawner();
+        if (!wiped && doneSpawning && enemies.head == null) wiped = true;
 
         if (healthBar != null)
         {
@@ -119,6 +124,16 @@ public class EnemySpawnerController : MonoBehaviour
         {
             waveTimer.SetSecondaryValue(currentWaveTime, currentWaveMaxTime, Color.yellow, new Color(1.0f, 0.5f, 0.0f, 1.0f));
         }
+    }
+
+    public bool Started()
+    {
+        return started;
+    }
+
+    public bool Wiped()
+    {
+        return wiped;
     }
 
     public void StartEnemySpawner()
@@ -136,6 +151,7 @@ public class EnemySpawnerController : MonoBehaviour
         }
 
         currentCoroutine = StartCoroutine(SpawnWaves());
+        started = true;
     }
 
     private IEnumerator SpawnWaves()
@@ -153,6 +169,8 @@ public class EnemySpawnerController : MonoBehaviour
             }
         }
 
+        yield return new WaitForSeconds(5.0f);
+        doneSpawning = true;
         currentCoroutine = null;
     }
 

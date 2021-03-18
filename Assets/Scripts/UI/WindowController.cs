@@ -21,7 +21,8 @@ public class WindowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (isReady && Input.GetKeyDown(KeyCode.Return)) animator.SetTrigger("Enter");
+        if (isReady && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
+            animator.SetTrigger("Enter");
     }
 
     public void SetMessage(string message)

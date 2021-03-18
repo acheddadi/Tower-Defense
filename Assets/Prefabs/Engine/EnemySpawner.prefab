@@ -53,7 +53,7 @@ MonoBehaviour:
   - nextWaveDelay: 60
     enemyCount: 4
     spawnDuration: 10
-  - nextWaveDelay: 120
+  - nextWaveDelay: 60
     enemyCount: 8
     spawnDuration: 20
   - nextWaveDelay: 0

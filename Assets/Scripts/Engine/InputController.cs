@@ -6,7 +6,7 @@ public class InputController : MonoBehaviour
 {
     [SerializeField] private PlayerController player;
 
-    private enum State { GAMEPLAY, MENU };
+    public enum State { GAMEPLAY, MENU };
     private State currentState = State.GAMEPLAY;
 
     private Vector2 direction = Vector3.zero;
@@ -47,5 +47,10 @@ public class InputController : MonoBehaviour
         if (direction.magnitude > 0.0f) player.Move(direction);
         if (actionButton_D) player.HoldTurretPlacement();
         if (actionButton_U) player.ReleaseTurretPlacement();
+    }
+
+    public void SetState(State state)
+    {
+        currentState = state;
     }
 }
