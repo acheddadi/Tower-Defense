@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: af47d42e984bcd34ab1f30336afd3ecb, type: 2}
+--- !u!114 &458042554 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4742307265419899311, guid: 0b38c30a3d303764185cb303c2c67733, type: 3}
+  m_PrefabInstance: {fileID: 1867815636}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &804766028 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5947625393719503850, guid: 5d99ec9dc7d57494ba13dbd58839f24c, type: 3}
@@ -630,15 +641,35 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1717889784}
     - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
-      propertyPath: enemyWaves.Array.size
-      value: 2
-      objectReference: {fileID: 0}
+      propertyPath: waveTimer
+      value: 
+      objectReference: {fileID: 1867815638}
     - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
-      propertyPath: enemyWaves.Array.data[1].enemyCount
+      propertyPath: waveCountText
+      value: 
+      objectReference: {fileID: 1717889784}
+    - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
+      propertyPath: enemyWaves.Array.data[3].enemyCount
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
-      propertyPath: enemyWaves.Array.data[1].spawnDuration
+      propertyPath: enemyWaves.Array.data[0].waveDuration
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
+      propertyPath: enemyWaves.Array.data[1].waveDuration
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
+      propertyPath: enemyWaves.Array.data[2].waveDuration
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
+      propertyPath: enemyWaves.Array.data[3].waveDuration
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
+      propertyPath: enemyWaves.Array.data[3].spawnDuration
       value: 6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -860,6 +891,10 @@ PrefabInstance:
       propertyPath: m_LocalRotation.z
       value: -0
       objectReference: {fileID: 0}
+    - target: {fileID: 5947625393719503851, guid: 5d99ec9dc7d57494ba13dbd58839f24c, type: 3}
+      propertyPath: availableResourcesText
+      value: 
+      objectReference: {fileID: 458042554}
     - target: {fileID: 5947625393719503854, guid: 5d99ec9dc7d57494ba13dbd58839f24c, type: 3}
       propertyPath: m_Name
       value: Player

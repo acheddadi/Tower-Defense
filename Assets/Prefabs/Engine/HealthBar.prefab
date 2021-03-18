@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6883406202279316357}
   - component: {fileID: 6883406202279316358}
   m_Layer: 0
-  m_Name: FG
+  m_Name: MainBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -233,7 +233,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb52a6095d78dc740a45ee780111884b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foregroundBar: {fileID: 6883406202279316359}
+  mainBar: {fileID: 6883406202279316359}
+  secondaryBar: {fileID: 0}
 --- !u!1 &6883406202834467733
 GameObject:
   m_ObjectHideFlags: 0
@@ -246,7 +247,7 @@ GameObject:
   - component: {fileID: 6883406202834467730}
   - component: {fileID: 6883406202834467731}
   m_Layer: 0
-  m_Name: BG
+  m_Name: Background
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

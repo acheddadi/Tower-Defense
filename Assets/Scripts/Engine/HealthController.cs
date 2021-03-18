@@ -23,7 +23,7 @@ public class HealthController : MonoBehaviour
         this.health -= health;
         this.health = Mathf.Max(this.health, 0.0f);
 
-        if (healthBar != null) healthBar.SetHealth(this.health, maxHealth);
+        if (healthBar != null) healthBar.SetMainValue(this.health, maxHealth);
         if (this.health == 0.0f) Die();
     }
 
@@ -33,7 +33,7 @@ public class HealthController : MonoBehaviour
         this.health += health;
         this.health = Mathf.Min(this.health, 100.0f);
 
-        if (healthBar != null) healthBar.SetHealth(this.health, maxHealth);
+        if (healthBar != null) healthBar.SetMainValue(this.health, maxHealth);
     }
 
     private void Die()

@@ -37,11 +37,14 @@ public class TurretController : MonoBehaviour
 
             Vector3 direction = inboundEnemy.First.Value.transform.position + Vector3.up * 0.25f - transform.position;
             Quaternion swivelRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(direction, Vector3.up).normalized);
-            transform.rotation = Quaternion.Slerp(transform.rotation, swivelRotation, lookAtSpeed * Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, swivelRotation, lookAtSpeed * Time.deltaTime);
 
-            direction = inboundEnemy.First.Value.transform.position + Vector3.up * 0.25f - childToTilt.position;
-            Quaternion tiltRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(direction, childToTilt.right).normalized);
-            childToTilt.rotation = Quaternion.Slerp(childToTilt.rotation, tiltRotation, lookAtSpeed * Time.deltaTime);
+            if (Vector3.Dot(transform.forward, Vector3.ProjectOnPlane(inboundEnemy.First.Value.transform.position - transform.position, Vector3.up).normalized) > 0.5f)
+            {
+                direction = inboundEnemy.First.Value.transform.position + Vector3.up * 0.25f - childToTilt.position;
+                Quaternion tiltRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(direction, childToTilt.right).normalized);
+                childToTilt.rotation = Quaternion.Lerp(childToTilt.rotation, tiltRotation, lookAtSpeed * Time.deltaTime);
+            }
 
             if (firingTimer > firingDelay)
             {

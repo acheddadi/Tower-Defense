@@ -40,7 +40,6 @@ public class TurretPlacement : MonoBehaviour
 
             if (!particleModules[0].startColor.color.Equals(currentColour))
             {
-                Debug.Log("Changing colour");
                 for (int i = 0; i < particleModules.Length; i++)
                 {
                     particleModules[i].startColor = currentColour;
@@ -80,7 +79,7 @@ public class TurretPlacement : MonoBehaviour
             for (int i = 0; i < particleSystems.Length; i++) particleSystems[i].Play();
     }
 
-    public void RemoveTurretOverlay()
+    public bool RemoveTurretOverlay()
     {
         isPlacing = false;
         if (particleSystems != null)
@@ -95,6 +94,9 @@ public class TurretPlacement : MonoBehaviour
             GameObject turret = Instantiate(turretPrefab);
             turret.transform.position = transform.position;
             turret.transform.rotation = transform.rotation;
+            return true;
         }
+
+        return false;
     }
 }

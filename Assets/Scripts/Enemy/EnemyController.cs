@@ -26,15 +26,19 @@ public class EnemyController : MonoBehaviour
     void Start()
     {
         navMeshAgent = GetComponent<NavMeshAgent>();
-
-        if (CrystalController.GetInstance() == null) Debug.LogError("No instance of crystal was found.");
     }
 
     private void Update()
     {
+        if (CrystalController.GetInstance() == null)
+        {
+            if (navMeshAgent.velocity.magnitude > 0.0f) DelayReaction();
+            return;
+        }
+
         if (attackTarget == null)
         {
-            if (CrystalController.GetInstance() != null && movementTimer > movementDelay)
+            if (movementTimer > movementDelay)
             {
                 navMeshAgent.SetDestination(CrystalController.GetInstance().transform.position);
                 movementTimer = 0.0f;

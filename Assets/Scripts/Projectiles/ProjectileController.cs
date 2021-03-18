@@ -11,6 +11,8 @@ public class ProjectileController : MonoBehaviour
     private Animator animator;
     private bool exploded = false;
 
+    private float timer = 0.0f;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +22,11 @@ public class ProjectileController : MonoBehaviour
 
     private void Update()
     {
+        if (timer > 5.0f) DestroyProjectile();
+
         if (!exploded) transform.position += transform.forward * speed * Time.deltaTime;
+
+        timer += Time.deltaTime;
     }
 
     private void OnTriggerEnter(Collider other)

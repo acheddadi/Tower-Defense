@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 [RequireComponent(typeof(CharacterController))]
 [RequireComponent(typeof(HealthController))]
@@ -12,6 +13,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private TurretPlacement turretPlacement;
     [SerializeField] private float turretPlacementDistance = 1.0f;
     [SerializeField] private float turretPlacementSpeed = 10.0f;
+    [SerializeField] private int availableResources = 2;
+    [SerializeField] private Text availableResourcesText;
 
 
     private CharacterController characterController;
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour
 
     private RaycastHit raycastHit;
     private Vector3 turretPlacementTarget;
+
 
     // Start is called before the first frame update
     void Start()
@@ -40,6 +44,8 @@ public class PlayerController : MonoBehaviour
 
         else turretPlacement.transform.position =
             Vector3.Lerp(turretPlacement.transform.position, turretPlacementTarget, Time.deltaTime * turretPlacementSpeed);
+
+        if (availableResourcesText != null) availableResourcesText.text = string.Format("x{0:00}", availableResources);
     }
 
     private void FixedUpdate()
@@ -74,13 +80,17 @@ public class PlayerController : MonoBehaviour
 
     public void HoldTurretPlacement()
     {
+        if (availableResources == 0) return;
+
         isPlacingTurret = true;
         turretPlacement.PlaceTurretOverlay();
     }
 
     public void ReleaseTurretPlacement()
     {
+        if (availableResources == 0) return;
+
         isPlacingTurret = false;
-        turretPlacement.RemoveTurretOverlay();
+        if (turretPlacement.RemoveTurretOverlay()) availableResources--;
     }
 }

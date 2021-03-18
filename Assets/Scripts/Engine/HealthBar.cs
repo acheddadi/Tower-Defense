@@ -5,29 +5,49 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {
-    [SerializeField] private RectTransform foregroundBar;
-    private Image image;
+    [SerializeField] private RectTransform mainBar;
+    [SerializeField] private RectTransform secondaryBar;
 
-    private void Awake()
+    private Image mainImage;
+    private Image secondaryImage;
+
+    private void Start()
     {
-        if (foregroundBar != null) image = foregroundBar.GetComponent<Image>();
-        else Debug.Log("Reference to Foreground Bar is not set!");
+        if (mainBar != null) mainImage = mainBar.GetComponent<Image>();
+        else Debug.Log("Main bar not set in object: " + name);
+
+        if (secondaryBar != null) secondaryImage = secondaryBar.GetComponent<Image>();
     }
 
-    public void SetHealth(float health, float maxHealth)
+    public void SetMainValue(float health, float maxHealth)
     {
-        if (foregroundBar != null)
-        {
-            if (maxHealth == 0.0f)
-            {
-                foregroundBar.localScale = new Vector3(0.0f, 1.0f, 1.0f);
-                return;
-            }
-            
-            foregroundBar.localScale = new Vector3(health / maxHealth, 1.0f, 1.0f);
+        if (mainBar == null) return;
 
-            if (health / maxHealth < 0.34f) image.color = Color.red;
-            else image.color = Color.green;
+        if (maxHealth == 0.0f)
+        {
+            mainBar.localScale = new Vector3(0.0f, 1.0f, 1.0f);
+            return;
         }
+
+        mainBar.localScale = new Vector3(health / maxHealth, 1.0f, 1.0f);
+
+        if (health / maxHealth < 0.34f) mainImage.color = Color.red;
+        else mainImage.color = Color.green;
+    }
+
+    public void SetSecondaryValue(float health, float maxHealth, Color normal, Color low)
+    {
+        if (secondaryBar == null) return;
+
+        if (maxHealth == 0.0f)
+        {
+            secondaryBar.localScale = new Vector3(0.0f, 1.0f, 1.0f);
+            return;
+        }
+
+        secondaryBar.localScale = new Vector3(health / maxHealth, 1.0f, 1.0f);
+
+        if (health / maxHealth < 0.34f) secondaryImage.color = low;
+        else secondaryImage.color = normal;
     }
 }

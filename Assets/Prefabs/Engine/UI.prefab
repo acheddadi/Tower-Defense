@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1985300634355880946}
   - component: {fileID: 1671531369122403455}
   m_Layer: 5
-  m_Name: GoalLife
+  m_Name: CrystalLife
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -85,7 +85,7 @@ GameObject:
   - component: {fileID: 8130009787394518583}
   - component: {fileID: 4816534060720512580}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: SecondaryBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -391,7 +391,7 @@ GameObject:
   - component: {fileID: 131163697528716423}
   - component: {fileID: 5735642540898714289}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: MainBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -624,7 +624,7 @@ GameObject:
   - component: {fileID: 4742307265544518922}
   - component: {fileID: 4742307265544518923}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: MainBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -700,7 +700,7 @@ GameObject:
   - component: {fileID: 4742307265640979260}
   - component: {fileID: 675158166272405473}
   m_Layer: 5
-  m_Name: EnemyPanel
+  m_Name: EnemiesPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -778,7 +778,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb52a6095d78dc740a45ee780111884b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foregroundBar: {fileID: 238298458220275840}
+  mainBar: {fileID: 238298458220275840}
+  secondaryBar: {fileID: 0}
 --- !u!1 &4742307266002752850
 GameObject:
   m_ObjectHideFlags: 0
@@ -902,7 +903,7 @@ GameObject:
   - component: {fileID: 4742307266234019416}
   - component: {fileID: 169301407425145703}
   m_Layer: 5
-  m_Name: HeroPanel
+  m_Name: PlayerPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -980,7 +981,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb52a6095d78dc740a45ee780111884b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foregroundBar: {fileID: 4742307265544518920}
+  mainBar: {fileID: 4742307265544518920}
+  secondaryBar: {fileID: 0}
 --- !u!1 &4742307266546158437
 GameObject:
   m_ObjectHideFlags: 0
@@ -1175,7 +1177,7 @@ GameObject:
   - component: {fileID: 4742307266882891473}
   - component: {fileID: 3645561914247392790}
   m_Layer: 5
-  m_Name: GoalPanel
+  m_Name: ProgressPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1253,7 +1255,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb52a6095d78dc740a45ee780111884b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  foregroundBar: {fileID: 5805191720460224228}
+  mainBar: {fileID: 5805191720460224228}
+  secondaryBar: {fileID: 1534670600407049829}
 --- !u!1 &4742307267109430277
 GameObject:
   m_ObjectHideFlags: 0
@@ -1570,7 +1573,7 @@ GameObject:
   - component: {fileID: 7038983243526685895}
   - component: {fileID: 3834173247832095823}
   m_Layer: 5
-  m_Name: Bar
+  m_Name: MainBar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1645,7 +1648,7 @@ GameObject:
   - component: {fileID: 6198327191305706769}
   - component: {fileID: 7919158687432876697}
   m_Layer: 5
-  m_Name: Time
+  m_Name: NextWave
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

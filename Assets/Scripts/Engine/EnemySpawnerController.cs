@@ -8,11 +8,13 @@ public class EnemySpawnerController : MonoBehaviour
     [System.Serializable]
     private class EnemyWave
     {
+        public float nextWaveDelay;
         public int enemyCount;
         public float spawnDuration;
 
-        public EnemyWave(int enemyCount, float spawnDuration)
+        public EnemyWave(float nextWaveDelay, int enemyCount, float spawnDuration)
         {
+            this.nextWaveDelay = nextWaveDelay;
             this.enemyCount = enemyCount;
             this.spawnDuration = spawnDuration;
         }
@@ -64,8 +66,7 @@ public class EnemySpawnerController : MonoBehaviour
         {
             if (head == null)
             {
-                health = 0.0f;
-                maxHealth = 0.0f;
+                health = maxHealth = 0.0f;
                 return;
             }
 
@@ -92,27 +93,35 @@ public class EnemySpawnerController : MonoBehaviour
         new Vector3(-4.0f, 0.0f, 4.0f),
         new Vector3(-4.0f, 0.0f, -4.0f)
     };
-    [SerializeField] private EnemyWave[] enemyWaves = { new EnemyWave(3, 3.0f) };
+    [SerializeField] private EnemyWave[] enemyWaves = { new EnemyWave(30.0f, 3, 3.0f) };
     [SerializeField] private HealthBar healthBar;
-    [SerializeField] private Text waveCount;
+    [SerializeField] private HealthBar waveTimer;
+    [SerializeField] private Text waveCountText;
 
     private Coroutine currentCoroutine;
     private EnemyList enemies = new EnemyList();
     private int currentWave = 0;
+    private float currentWaveTime = 0.0f;
+    private float currentWaveMaxTime = 0.0f;
     private int lastSpawnPoint = -1;
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F)) NextWave();
+        if (Input.GetKeyDown(KeyCode.F)) StartEnemySpawner();
 
         if (healthBar != null)
         {
             enemies.UpdateHealth();
-            healthBar.SetHealth(enemies.health, enemies.maxHealth);
+            healthBar.SetMainValue(enemies.health, enemies.maxHealth);
+        }
+
+        if (waveTimer != null)
+        {
+            waveTimer.SetSecondaryValue(currentWaveTime, currentWaveMaxTime, Color.yellow, new Color(255.0f, 128.0f, 0.0f));
         }
     }
 
-    private void NextWave()
+    public void StartEnemySpawner()
     {
         if (enemyPrefabs == null || spawnPoints == null || enemyWaves == null)
         {
@@ -126,23 +135,43 @@ public class EnemySpawnerController : MonoBehaviour
             return;
         }
 
-        if (currentWave < enemyWaves.Length) currentCoroutine = StartCoroutine(SpawnEnemies());
+        currentCoroutine = StartCoroutine(SpawnWaves());
+    }
+
+    private IEnumerator SpawnWaves()
+    {
+        for (; currentWave < enemyWaves.Length; currentWave++)
+        {
+            if (waveCountText != null) waveCountText.text = string.Format("{0:00}", currentWave + 1);
+            currentWaveMaxTime = enemyWaves[currentWave].nextWaveDelay;
+
+            NextWave();
+            for (float t = 0.0f; t < enemyWaves[currentWave].nextWaveDelay; t += Time.deltaTime)
+            {
+                currentWaveTime = currentWaveMaxTime - t;
+                yield return new WaitForEndOfFrame();
+            }
+        }
+
+        currentCoroutine = null;
+    }
+
+    private void NextWave()
+    {
+        if (currentWave < enemyWaves.Length) StartCoroutine(SpawnEnemies());
         else Debug.Log("No more waves left to spawn.");
     }
 
     private IEnumerator SpawnEnemies()
     {
-        if (waveCount != null) waveCount.text = string.Format("{0:00}", currentWave + 1);
+        enemies.maxHealth = enemies.health;
         float delay = enemyWaves[currentWave].spawnDuration / enemyWaves[currentWave].enemyCount;
 
-        for (int i = 0; i < enemyWaves[currentWave].enemyCount; i++)
+        for (int i = 0; i < enemyWaves[Mathf.Min(currentWave, enemyWaves.Length - 1)].enemyCount; i++)
         {
             enemies.Push(SpawnEnemy());
             yield return new WaitForSeconds(delay);
         }
-
-        currentWave++;
-        currentCoroutine = null;
     }
 
     private HealthController SpawnEnemy()
