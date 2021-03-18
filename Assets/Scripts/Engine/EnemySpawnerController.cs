@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class EnemySpawnerController : MonoBehaviour
 {
@@ -16,7 +17,6 @@ public class EnemySpawnerController : MonoBehaviour
             this.spawnDuration = spawnDuration;
         }
     }
-
     private class EnemyList
     {
         public class Node
@@ -94,6 +94,7 @@ public class EnemySpawnerController : MonoBehaviour
     };
     [SerializeField] private EnemyWave[] enemyWaves = { new EnemyWave(3, 3.0f) };
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private Text waveCount;
 
     private Coroutine currentCoroutine;
     private EnemyList enemies = new EnemyList();
@@ -131,6 +132,7 @@ public class EnemySpawnerController : MonoBehaviour
 
     private IEnumerator SpawnEnemies()
     {
+        if (waveCount != null) waveCount.text = string.Format("{0:00}", currentWave + 1);
         float delay = enemyWaves[currentWave].spawnDuration / enemyWaves[currentWave].enemyCount;
 
         for (int i = 0; i < enemyWaves[currentWave].enemyCount; i++)
