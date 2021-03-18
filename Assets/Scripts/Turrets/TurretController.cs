@@ -8,7 +8,7 @@ public class TurretController : MonoBehaviour
 {
     [SerializeField] private float lookAtSpeed = 2.0f;
     [SerializeField] private Transform childToTilt;
-    [SerializeField] private float firingRate = 2.0f;
+    [SerializeField] private float firingDelay = 2.0f;
     [SerializeField] private GameObject projectilePrefab;
     [SerializeField] private float projectileSpeed = 1.0f;
     [SerializeField] private float projectileDamage = 10.0f;
@@ -43,27 +43,15 @@ public class TurretController : MonoBehaviour
             Quaternion tiltRotation = Quaternion.LookRotation(Vector3.ProjectOnPlane(direction, childToTilt.right).normalized);
             childToTilt.rotation = Quaternion.Slerp(childToTilt.rotation, tiltRotation, lookAtSpeed * Time.deltaTime);
 
-            if (firingTimer > firingRate)
+            if (firingTimer > firingDelay)
             {
                 if (Physics.Raycast(childToTilt.transform.position + childToTilt.transform.forward * 0.25f, childToTilt.transform.forward, out raycastHit, Mathf.Infinity))
                 {
                     if (raycastHit.collider.tag == "Enemy") Fire();
-                    else Debug.Log(raycastHit.collider.tag + " is in the way.");
                 }
             }
 
             firingTimer += Time.deltaTime;
-        }
-
-        else
-        {
-            if (transform.rotation != Quaternion.identity)
-                transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.identity, (lookAtSpeed / 2.0f) * Time.deltaTime);
-
-            if (childToTilt.rotation != Quaternion.identity)
-                childToTilt.rotation = Quaternion.Slerp(childToTilt.rotation, Quaternion.identity, (lookAtSpeed / 2.0f) * Time.deltaTime);
-
-            firingTimer = 0.0f;
         }
 
     }

@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: 6504806108844515931}
   - component: {fileID: 6504806108844515930}
   m_Layer: 0
-  m_Name: Enemy
+  m_Name: Sorcerer
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -191,7 +191,7 @@ SphereCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Radius: 3
+  m_Radius: 2
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &575188290565693332
 Rigidbody:
@@ -247,7 +247,7 @@ MonoBehaviour:
   attackDelay: 1
   attackRange: 0.5
   attackStrength: 10
-  giveUpChaseRange: 5
+  giveUpChaseRange: 4
   spriteAnimator: {fileID: 6155001868358464775}
 --- !u!114 &6504806108844515930
 MonoBehaviour:

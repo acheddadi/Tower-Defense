@@ -44,4 +44,14 @@ public class HealthController : MonoBehaviour
 
         Destroy(gameObject);
     }
+
+    public float GetHealth()
+    {
+        return health;
+    }
+
+    public float GetMaxHealth()
+    {
+        return maxHealth;
+    }
 }

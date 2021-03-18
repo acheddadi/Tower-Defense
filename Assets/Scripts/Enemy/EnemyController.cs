@@ -56,6 +56,7 @@ public class EnemyController : MonoBehaviour
                     attackTimer = 0.0f;
                 }
 
+                movementTimer = 0.0f;
                 attackTimer += Time.deltaTime;
             }
 
@@ -67,6 +68,14 @@ public class EnemyController : MonoBehaviour
         }
 
         movementTimer += Time.deltaTime;
+    }
+
+    private void DelayReaction()
+    {
+        navMeshAgent.velocity = Vector3.zero;
+        navMeshAgent.ResetPath();
+        movementTimer = 0.0f;
+        attackTimer = 0.0f;
     }
 
     private void FixedUpdate()
@@ -82,11 +91,8 @@ public class EnemyController : MonoBehaviour
 
         if (attackTarget != null && Vector3.Distance(transform.position, attackTarget.transform.position) > giveUpChaseRange)
         {
-            navMeshAgent.velocity = Vector3.zero;
-            navMeshAgent.ResetPath();
+            DelayReaction();
             attackTarget = null;
-            movementTimer = 0.0f;
-            attackTimer = 0.0f;
         }
     }
 
@@ -96,8 +102,11 @@ public class EnemyController : MonoBehaviour
         {
             HealthController target = other.GetComponent<HealthController>();
 
-            if (target != null && other.tag != "Enemy")
+            if (target != null && other.tag != "Enemy" && attackTarget != target)
+            {
+                DelayReaction();
                 attackTarget = target;
+            }
         }
     }
 }

@@ -18,7 +18,14 @@ public class HealthBar : MonoBehaviour
     {
         if (foregroundBar != null)
         {
+            if (maxHealth == 0.0f)
+            {
+                foregroundBar.localScale = new Vector3(0.0f, 1.0f, 1.0f);
+                return;
+            }
+            
             foregroundBar.localScale = new Vector3(health / maxHealth, 1.0f, 1.0f);
+
             if (health / maxHealth < 0.34f) image.color = Color.red;
             else image.color = Color.green;
         }
