@@ -193,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac7d5e12e5437d3439d08a122a549110, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerSpeed: 2
+  playerSpeed: 1.5
   gravity: 3
   spriteAnimator: {fileID: 5947625393234072981}
   turretPlacement: {fileID: 2454310808657391526}

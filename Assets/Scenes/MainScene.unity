@@ -629,6 +629,18 @@ PrefabInstance:
       propertyPath: waveCount
       value: 
       objectReference: {fileID: 1717889784}
+    - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
+      propertyPath: enemyWaves.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
+      propertyPath: enemyWaves.Array.data[1].enemyCount
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
+      propertyPath: enemyWaves.Array.data[1].spawnDuration
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
 --- !u!4 &2590359057084577290
