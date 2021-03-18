@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
-    [SerializeField] private string welcomeMessage;
-    [SerializeField] private string winMessage;
-    [SerializeField] private string loseMessage;
-    [SerializeField] private string creditsMessage;
+    [SerializeField] [TextArea] private string welcomeMessage;
+    [SerializeField] [TextArea] private string winMessage;
+    [SerializeField] [TextArea] private string loseMessage;
+    [SerializeField] [TextArea] private string creditsMessage;
     [SerializeField] private InputController inputController;
     [SerializeField] private EnemySpawnerController enemySpawnerController;
     [SerializeField] private GameObject windowPrefab;

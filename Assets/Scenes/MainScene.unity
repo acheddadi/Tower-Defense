@@ -123,6 +123,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 23800000, guid: af47d42e984bcd34ab1f30336afd3ecb, type: 2}
+--- !u!114 &201805620 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4851281242035823674, guid: 0df312aacd1c6014fb12e5737130ad07, type: 3}
+  m_PrefabInstance: {fileID: 4851281241938431489}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9d2966020b2a2468c222fc2599831e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &458042554 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4742307265419899311, guid: 0b38c30a3d303764185cb303c2c67733, type: 3}
@@ -249,6 +260,17 @@ MonoBehaviour:
   cameraOffset: {x: -16.5, y: 7.5, z: 11.55}
   cameraTarget: {fileID: 804766028}
   cameraSmoothing: 0.3
+--- !u!114 &979148546 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 122278796398972089, guid: 88580d441c92f0b48acf7709685a7c05, type: 3}
+  m_PrefabInstance: {fileID: 122278796771829744}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d84f21c720b8aeb4884f11723128fd35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1036285457
 GameObject:
   m_ObjectHideFlags: 0
@@ -311,6 +333,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1826668182}
+  - component: {fileID: 1826668183}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -332,6 +355,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1826668183
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1826668181}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b6cb865cdeaa6874aa5a319d1bfd1144, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  welcomeMessage: "This game was developed for Dr. Miguel Garcia-Ruiz's Game Software
+    Engineering course.\n\nYour objective is to protect the Crystal from waves of
+    enemy attacks. \n\nCollect resources from downed enemies to build defensive turrets
+    throughout the level.\n\nImportant game information is listed down below. Enjoy!"
+  winMessage: 'Congratulations! You have successfully defended the crytal!
+
+
+    Your
+    hero will live to see another day.'
+  loseMessage: 'Uh oh, it looks like your enemies have bested you.
+
+
+    Your journey
+    has ended, god save us all.'
+  creditsMessage: "This prototype was brought to you by:\n\nCheddadi, Ali\r - Scrum
+    Master, Product Owner, Programmer, Game Designer, Artist\n\nBajwa, Saeed Ahmed
+    \r- Documenter\n\nJiao, Zihan - Artist\n\nAkingbehin, Samuel\r - QA Tester"
+  inputController: {fileID: 201805620}
+  enemySpawnerController: {fileID: 979148546}
+  windowPrefab: {fileID: 3573028145208399841, guid: 5abe54fe24c96ca489fc018930f2a00b, type: 3}
 --- !u!1001 &1867815636
 PrefabInstance:
   m_ObjectHideFlags: 0
