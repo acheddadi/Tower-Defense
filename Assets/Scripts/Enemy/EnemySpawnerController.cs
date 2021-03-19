@@ -1,10 +1,16 @@
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class EnemySpawnerController : MonoBehaviour
 {
+    // Container object to specify the details of each wave.
     [System.Serializable]
     private class EnemyWave
     {
@@ -19,6 +25,8 @@ public class EnemySpawnerController : MonoBehaviour
             this.spawnDuration = spawnDuration;
         }
     }
+
+    // Custom Linked List to keep  track of enemies that are currently spawned and update their global health.
     private class EnemyList
     {
         public class Node
@@ -112,30 +120,36 @@ public class EnemySpawnerController : MonoBehaviour
 
     private void Update()
     {
+        // If all enemies were defeated, set wiped flag to true.
         if (!wiped && doneSpawning && enemies.head == null) wiped = true;
 
+        // Update global health of all enemies in a handy health bar.
         if (healthBar != null)
         {
             enemies.UpdateHealth();
             healthBar.SetMainValue(enemies.health, enemies.maxHealth);
         }
 
+        // Update remaining time before next wave in a hand bar.
         if (waveTimer != null)
         {
             waveTimer.SetSecondaryValue(currentWaveTime, currentWaveMaxTime, Color.yellow, new Color(1.0f, 0.5f, 0.0f, 1.0f));
         }
     }
 
+    // Getter to see if Spawner has started.
     public bool Started()
     {
         return started;
     }
 
+    // Getter to see if all enemies were killed.
     public bool Wiped()
     {
         return wiped;
     }
 
+    // Helper method to start spawning all waves.
     public void StartEnemySpawner()
     {
         if (enemyPrefabs == null || spawnPoints == null || enemyWaves == null)
@@ -154,6 +168,7 @@ public class EnemySpawnerController : MonoBehaviour
         started = true;
     }
 
+    // Coroutine to spawn each wave.
     private IEnumerator SpawnWaves()
     {
         for (; currentWave < enemyWaves.Length; currentWave++)
@@ -174,12 +189,14 @@ public class EnemySpawnerController : MonoBehaviour
         currentCoroutine = null;
     }
 
+    // Helper method to start spawning the enemies of the current wave.
     private void NextWave()
     {
         if (currentWave < enemyWaves.Length) StartCoroutine(SpawnEnemies());
         else Debug.Log("No more waves left to spawn.");
     }
 
+    // Coroutine to actually spawn those enemies.
     private IEnumerator SpawnEnemies()
     {
         enemies.maxHealth = enemies.health;
@@ -192,6 +209,7 @@ public class EnemySpawnerController : MonoBehaviour
         }
     }
 
+    // Helper method to spawn a single enemy and add it to our linked list.
     private HealthController SpawnEnemy()
     {
         int randomEnemy = Random.Range(0, enemyPrefabs.Length);
@@ -209,6 +227,7 @@ public class EnemySpawnerController : MonoBehaviour
         return enemy.GetComponent<HealthController>();
     }
 
+    // Draw Gizmos on the Unity editor to see where the spawn points are.
     private void OnDrawGizmosSelected()
     {
         if (spawnPoints == null) return;

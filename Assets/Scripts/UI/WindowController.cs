@@ -1,3 +1,9 @@
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,7 +17,7 @@ public class WindowController : MonoBehaviour
     private Animator animator;
     private bool isReady = false;
 
-    // Start is called before the first frame update
+    // Set custom message.
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -21,6 +27,7 @@ public class WindowController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // If user hit the enter key, close the popup.
         if (isReady && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
         {
             animator.SetTrigger("Enter");
@@ -28,16 +35,19 @@ public class WindowController : MonoBehaviour
         }
     }
 
+    // Helper method to set the message.
     public void SetMessage(string message)
     {
         customMessage = message;
     }
 
+    // Helper method to let us know that the window is ready to be interacted with.
     public void Ready()
     {
         isReady = true;
     }
 
+    // Helper method to let us know that the animation is done playing, and we can destroy the window.
     public void Close()
     {
         Destroy(gameObject);

@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 
 [RequireComponent(typeof(SphereCollider))]
@@ -20,9 +24,11 @@ public class ProjectileController : MonoBehaviour
 
     private void Update()
     {
+        // Go in a straight line if no impacts detected.
         if (!exploded) transform.position += transform.forward * speed * Time.deltaTime;
     }
 
+    // Impact detected, go boom.
     private void OnTriggerEnter(Collider other)
     {
         if (!other.isTrigger)

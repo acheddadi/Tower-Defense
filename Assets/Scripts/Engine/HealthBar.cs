@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +23,7 @@ public class HealthBar : MonoBehaviour
         if (secondaryBar != null) secondaryImage = secondaryBar.GetComponent<Image>();
     }
 
+    // Setter method to change the scale of our health gauge according to current health.
     public void SetMainValue(float health, float maxHealth)
     {
         if (mainBar == null) return;
@@ -35,6 +40,7 @@ public class HealthBar : MonoBehaviour
         else mainImage.color = Color.green;
     }
 
+    // Setter method to change the scale of our secondary gauge (usually the timer, but could be used for stamina or mana.)
     public void SetSecondaryValue(float health, float maxHealth, Color normal, Color low)
     {
         if (secondaryBar == null) return;

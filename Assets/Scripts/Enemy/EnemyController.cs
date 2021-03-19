@@ -1,6 +1,9 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -30,12 +33,14 @@ public class EnemyController : MonoBehaviour
 
     private void Update()
     {
+        // If Crystal was destroyed, have all enemies stop all movement.
         if (CrystalController.GetInstance() == null)
         {
             if (navMeshAgent.velocity.magnitude > 0.0f) DelayReaction();
             return;
         }
 
+        // If no target detected, move towards the Crystal.
         if (attackTarget == null)
         {
             if (movementTimer > movementDelay)
@@ -45,17 +50,23 @@ public class EnemyController : MonoBehaviour
             }
         }
 
+        // Target is detected.
         else
         {
+            // If close enough to attack target.
             if (Vector3.Distance(attackTarget.transform.position, transform.position) < attackRange)
             {
                 navMeshAgent.velocity = Vector3.zero;
                 navMeshAgent.ResetPath();
 
+                // Start attacking after delay has been reached.
                 if (attackTimer > attackDelay)
                 {
+                    // Align sprite to always face target.
                     spriteDirection = Vector3.ProjectOnPlane(attackTarget.transform.position - transform.position, Camera.main.transform.forward).normalized;
                     if (spriteAnimator != null) spriteAnimator.Attack();
+
+                    // Player sound and remove health from target.
                     AudioController.Attack();
                     attackTarget.LoseHealth(attackStrength);
                     attackTimer = 0.0f;
@@ -65,6 +76,7 @@ public class EnemyController : MonoBehaviour
                 attackTimer += Time.deltaTime;
             }
 
+            // Not close enough to attack, keep chasing target.
             else if (movementTimer > movementDelay)
             {
                 navMeshAgent.SetDestination(attackTarget.transform.position);
@@ -75,6 +87,7 @@ public class EnemyController : MonoBehaviour
         movementTimer += Time.deltaTime;
     }
 
+    // Helper method to stop enemy in its path.
     private void DelayReaction()
     {
         navMeshAgent.velocity = Vector3.zero;
@@ -83,17 +96,22 @@ public class EnemyController : MonoBehaviour
         attackTimer = 0.0f;
     }
 
+    // Physics update.
     private void FixedUpdate()
     {
+        // If we animator controlled was assigned.
         if (spriteAnimator != null)
         {
+            // Make sure that we're moving if we want to rotate the sprite (looks better than way.)
             if (navMeshAgent.velocity.magnitude > 0.0f)
                 spriteDirection = Vector3.ProjectOnPlane(navMeshAgent.velocity, Camera.main.transform.forward).normalized;
 
+            // Look at target.
             spriteAnimator.SetDirection(spriteDirection);
             spriteAnimator.SetMoving(navMeshAgent.velocity.magnitude > 0.0f);
         }
 
+        // If we are too far from the target, give up the chase.
         if (attackTarget != null && Vector3.Distance(transform.position, attackTarget.transform.position) > giveUpChaseRange)
         {
             DelayReaction();
@@ -101,6 +119,7 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    // Target acquired (beep beep boop, fire missiles!)
     private void OnTriggerEnter(Collider other)
     {
         if (!other.isTrigger)

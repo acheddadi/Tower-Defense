@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 
 public class SmoothSpawn : MonoBehaviour
@@ -10,6 +14,7 @@ public class SmoothSpawn : MonoBehaviour
 
     private void Awake()
     {
+        // Make our object tiny when spawning.
         initialScale = transform.localScale;
         transform.localScale = Vector3.zero;
     }
@@ -17,6 +22,7 @@ public class SmoothSpawn : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Smoothly bring it back to its original size.
         if (transform.localScale != initialScale) transform.localScale = Vector3.MoveTowards(transform.localScale, initialScale, spawnSpeed * Time.deltaTime);
     }
 }

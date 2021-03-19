@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 
 public class AudioController : MonoBehaviour
@@ -13,8 +17,10 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioClip explosionSound;
     [SerializeField] private AudioClip uiSound;
 
+    // Singleton pattern so that all objects can access this instance.
     private static AudioController instance;
 
+    // Helper methods to play sound clips.
     private void Awake()
     {
         if (instance == null) instance = this;

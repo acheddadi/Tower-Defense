@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 
 public class Rotator : MonoBehaviour
@@ -10,6 +14,7 @@ public class Rotator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Rotate an object (this is my lazy way of animating an object.)
         transform.Rotate(rotationAxis * rotateSpeed * Time.deltaTime, Space.World);
     }
 }

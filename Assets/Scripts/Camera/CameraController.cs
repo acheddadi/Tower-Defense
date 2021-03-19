@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 
 public class CameraController : MonoBehaviour
@@ -10,6 +14,7 @@ public class CameraController : MonoBehaviour
 
     private Vector3 velocity = Vector3.zero;
 
+    // Follow player around while applying some smoothing.
     void Update()
     {
         if (cameraTarget == null) return;

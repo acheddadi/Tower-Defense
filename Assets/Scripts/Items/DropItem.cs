@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 
 public class DropItem : MonoBehaviour
@@ -9,6 +13,7 @@ public class DropItem : MonoBehaviour
 
     private bool applicationQuit = false;
 
+    // Make sure the object isn't being destroyed because the user quit the game, other forget spawning new objects.
     private void OnApplicationQuit()
     {
         applicationQuit = true;
@@ -19,6 +24,7 @@ public class DropItem : MonoBehaviour
         if (!applicationQuit) Drop();
     }
 
+    // Helper method to drop an item when object is destroyed.
     private void Drop()
     {
         if (itemPrefabs != null)

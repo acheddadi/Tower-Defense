@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 
 public class HealthController : MonoBehaviour
@@ -16,6 +20,7 @@ public class HealthController : MonoBehaviour
         health = maxHealth;
     }
 
+    // Helper method to remove health from our health controller.
     public void LoseHealth(float health)
     {
         health -=  health * (1.0f - (10.0f / (10.0f + defensePoints)));
@@ -27,6 +32,7 @@ public class HealthController : MonoBehaviour
         if (this.health == 0.0f) Die();
     }
 
+    // Helper method to add health to our health controller.
     public void GainHealth(float health)
     {
         Debug.Log(name + " gained " + health + " hp.");
@@ -36,6 +42,7 @@ public class HealthController : MonoBehaviour
         if (healthBar != null) healthBar.SetMainValue(this.health, maxHealth);
     }
 
+    // Helper method to destroy the player object.
     private void Die()
     {
         AudioController.Hurt();
@@ -46,11 +53,13 @@ public class HealthController : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // Getter for health.
     public float GetHealth()
     {
         return health;
     }
 
+    // Getter to Max health.
     public float GetMaxHealth()
     {
         return maxHealth;

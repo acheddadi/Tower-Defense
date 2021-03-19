@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 
 public class InputController : MonoBehaviour
@@ -18,6 +22,7 @@ public class InputController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Layer of abstraction for our input, just incase we want to add gamepad support later.
         direction.x = Input.GetAxisRaw("Horizontal");
         direction.y = Input.GetAxisRaw("Vertical");
 
@@ -25,7 +30,7 @@ public class InputController : MonoBehaviour
         actionButton_D = Input.GetKeyDown(KeyCode.Space);
         actionButton_U = Input.GetKeyUp(KeyCode.Space);
 
-
+        // Switch between game states to disable user input.
         switch (currentState)
         {
             case State.GAMEPLAY:
@@ -36,6 +41,7 @@ public class InputController : MonoBehaviour
         }
     }
 
+    // Send user inputs to player using this method.
     private void GameplayState()
     {
         if (player == null)
@@ -49,6 +55,7 @@ public class InputController : MonoBehaviour
         if (actionButton_U) player.ReleaseTurretPlacement();
     }
 
+    // Setter for our input state.
     public void SetState(State state)
     {
         currentState = state;

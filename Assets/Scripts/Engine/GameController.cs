@@ -1,5 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// For COSC 2636 - WINTER 2021
+// --------------------------------------------------------
 using UnityEngine;
 
 public class GameController : MonoBehaviour
@@ -26,6 +30,7 @@ public class GameController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // Cycle through each game state.
         switch (currentState)
         {
             // Welcome Message
@@ -66,13 +71,15 @@ public class GameController : MonoBehaviour
                 }
                 break;
 
-            case 3:     // Credit Screen
+            // Credit Screen
+            case 3:     
                 if (currentWindow == null)
                     Quit();
                 break;
         }
     }
 
+    // Helper method to create our popup window.
     private GameObject CreateWindow(string message)
     {
         GameObject window = Instantiate(windowPrefab);
@@ -80,16 +87,19 @@ public class GameController : MonoBehaviour
         return window;
     }
 
+    // Helper method to disable user input.
     private void DisableInput()
     {
         inputController.SetState(InputController.State.MENU);
     }
 
+    // Helper method to enable user input.
     private void EnableInput()
     {
         inputController.SetState(InputController.State.GAMEPLAY);
     }
 
+    // Helper method to quit either the standalone game or the game inside the editor.
     private void Quit()
     {
         #if UNITY_STANDALONE
