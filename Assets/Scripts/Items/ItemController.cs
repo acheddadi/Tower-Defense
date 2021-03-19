@@ -21,7 +21,7 @@ public class ItemController : MonoBehaviour
                     other.GetComponent<HealthController>().GainHealth(10.0f);
                     break;
             }
-
+            AudioController.PickUp();
             Destroy(gameObject);
         }
     }

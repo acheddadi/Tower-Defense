@@ -38,6 +38,7 @@ public class HealthController : MonoBehaviour
 
     private void Die()
     {
+        AudioController.Hurt();
         Debug.Log(name + " has fallen.");
         if (destroyPrefab != null)
             Instantiate(destroyPrefab, transform.position, transform.rotation);

@@ -30,6 +30,7 @@ public class ProjectileController : MonoBehaviour
             if (other.tag == "Enemy")
                 other.GetComponent<HealthController>().LoseHealth(damage);
 
+            AudioController.Explode();
             animator.SetTrigger("Explode");
             exploded = true;
         }

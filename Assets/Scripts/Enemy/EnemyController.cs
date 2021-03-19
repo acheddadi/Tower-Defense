@@ -56,6 +56,7 @@ public class EnemyController : MonoBehaviour
                 {
                     spriteDirection = Vector3.ProjectOnPlane(attackTarget.transform.position - transform.position, Camera.main.transform.forward).normalized;
                     if (spriteAnimator != null) spriteAnimator.Attack();
+                    AudioController.Attack();
                     attackTarget.LoseHealth(attackStrength);
                     attackTimer = 0.0f;
                 }

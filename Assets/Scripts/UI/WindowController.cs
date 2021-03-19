@@ -22,7 +22,10 @@ public class WindowController : MonoBehaviour
     void Update()
     {
         if (isReady && (Input.GetKeyDown(KeyCode.Return) || Input.GetKeyDown(KeyCode.KeypadEnter)))
+        {
             animator.SetTrigger("Enter");
+            AudioController.Confirm();
+        }
     }
 
     public void SetMessage(string message)

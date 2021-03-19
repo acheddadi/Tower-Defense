@@ -91,6 +91,7 @@ public class TurretController : MonoBehaviour
     {
         if (projectilePrefab != null)
         {
+            AudioController.Shoot();
             ProjectileController projectile = 
                 Instantiate(projectilePrefab,
                 childToTilt.position + childToTilt.forward * 0.5f,
