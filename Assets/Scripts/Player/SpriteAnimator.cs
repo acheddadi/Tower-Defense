@@ -3,6 +3,9 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to easily sent data which is used
+// to change the sprites used for bot the player and enemies.
+// The data used is a direction vector, as well as a boolean flag.
 // --------------------------------------------------------
 using UnityEngine;
 

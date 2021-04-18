@@ -3,6 +3,8 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script smoothly moves the camera towards a desired
+// target, while always maintaining a constant offset.
 // --------------------------------------------------------
 using UnityEngine;
 

@@ -3,6 +3,10 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to control the player object and
+// give logic to typical player interactions. It takes care
+// of movement, animation, turret placement and resource
+// management. It is also used to update certain GUI elements.
 // --------------------------------------------------------
 using UnityEngine;
 using UnityEngine.UI;

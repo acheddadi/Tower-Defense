@@ -3,6 +3,8 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to control a UI element which contains
+// a health bar as well as a secondary bar.
 // --------------------------------------------------------
 using UnityEngine;
 using UnityEngine.UI;

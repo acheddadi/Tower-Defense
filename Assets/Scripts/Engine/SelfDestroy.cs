@@ -3,6 +3,9 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to give a certain life span to objects,
+// so that they may automatically destroy themselves after a
+// while (such as projectiles that go off screen.)
 // --------------------------------------------------------
 using UnityEngine;
 

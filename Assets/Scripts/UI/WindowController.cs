@@ -3,6 +3,8 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to control animated window objects which
+// are used to display popup messages for the user to read.
 // --------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;

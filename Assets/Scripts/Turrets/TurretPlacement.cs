@@ -3,6 +3,10 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to control the particle system used for
+// the turret's placement system. The script checks for valid
+// placements based on wether the turret is grounded and if it
+// is currently colliding with any other object.
 // --------------------------------------------------------
 using System;
 using System.Collections.Generic;

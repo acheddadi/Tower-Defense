@@ -3,6 +3,8 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This is a simple script used to control a projectile's
+// trajectory, as well as its associated animations (explosion.)
 // --------------------------------------------------------
 using UnityEngine;
 

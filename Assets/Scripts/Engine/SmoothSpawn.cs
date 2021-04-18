@@ -3,6 +3,9 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to slowly scale up objects to their
+// initial size in order to give the impression of a smooth
+// spawning animation.
 // --------------------------------------------------------
 using UnityEngine;
 

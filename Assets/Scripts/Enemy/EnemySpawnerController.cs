@@ -3,6 +3,9 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to spawn enemy prefabs based on predefined
+// settings that determine the number of enemy waves and how many
+// enemies are spawned for each wave. 
 // --------------------------------------------------------
 using System.Collections;
 using UnityEngine;

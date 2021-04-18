@@ -3,6 +3,9 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used rotate sprites so that they always
+// directly face the camera's forward vector. This gives
+// the impression of a 2.5D game.
 // --------------------------------------------------------
 using UnityEngine;
 

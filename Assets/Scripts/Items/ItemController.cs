@@ -3,6 +3,8 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to set the type of resource of an item,
+// along with setting its behaviour.
 // --------------------------------------------------------
 using UnityEngine;
 

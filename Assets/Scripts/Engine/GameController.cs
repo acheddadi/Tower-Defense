@@ -3,6 +3,9 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used as the main timeline which determines
+// which event to trigger next based on the current state of
+// the game.
 // --------------------------------------------------------
 using UnityEngine;
 

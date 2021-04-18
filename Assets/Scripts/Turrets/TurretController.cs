@@ -3,6 +3,10 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to control turrets and have them
+// move appropriately when locked on a target. The turret
+// object will tilt and swivel to always look at its target
+// and will fire a projectile based on set conditions.
 // --------------------------------------------------------
 using System;
 using System.Collections.Generic;

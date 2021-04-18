@@ -3,6 +3,9 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script implements a singleton pattern to an audio
+// controller, which in turn is used to play various sound
+// clips through two different audio sources (BGM and SFX.)
 // --------------------------------------------------------
 using UnityEngine;
 

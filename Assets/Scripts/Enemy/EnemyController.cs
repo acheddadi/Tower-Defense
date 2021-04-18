@@ -3,6 +3,12 @@
 // Written by: Ali Cheddadi
 // Date: MARCH 18, 2021
 // For COSC 2636 - WINTER 2021
+// This script is used to control an enemy object. It sends
+// position data to a Nav Mesh agent, which in turn moves
+// the enemy towards its destination. If a target becomes
+// in range, this behaviour is overridden and the enemy
+// begins to follow its target. Once a target is close
+// enough, the enemy will begin attacking its target.
 // --------------------------------------------------------
 using UnityEngine;
 using UnityEngine.AI;
