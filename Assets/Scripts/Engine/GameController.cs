@@ -50,7 +50,7 @@ public class GameController : MonoBehaviour
                 if (!enemySpawnerController.Started())
                     enemySpawnerController.StartEnemySpawner();
 
-                else if (enemySpawnerController.Wiped())
+                else if (enemySpawnerController.Victorious())
                 {
                     currentWindow = CreateWindow(winMessage);
                     DisableInput();

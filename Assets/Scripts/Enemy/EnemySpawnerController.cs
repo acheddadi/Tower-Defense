@@ -75,10 +75,15 @@ public class EnemySpawnerController : MonoBehaviour
 
         public void UpdateHealth()
         {
-            if (head == null || head.enemy == null)
+            if (head == null)
             {
-                head = null;
                 health = maxHealth = 0.0f;
+                return;
+            }
+
+            if (head.enemy == null)
+            {
+                head = head.next;
                 return;
             }
 
@@ -110,21 +115,23 @@ public class EnemySpawnerController : MonoBehaviour
     [SerializeField] private HealthBar waveTimer;
     [SerializeField] private Text waveCountText;
 
-    private Coroutine currentCoroutine;
+    private int activeWaveSpawners = 0;
+    private int activeEnemySpawners = 0;
+
     private EnemyList enemies = new EnemyList();
     private int currentWave = 0;
     private float currentWaveTime = 0.0f;
     private float currentWaveMaxTime = 0.0f;
     private int lastSpawnPoint = -1;
 
-    private bool doneSpawning = false;
     private bool started = false;
-    private bool wiped = false;
+    private bool victory = false;
 
     private void Update()
     {
         // If all enemies were defeated, set wiped flag to true.
-        if (!wiped && doneSpawning && enemies.head == null) wiped = true;
+        if (!victory &&  activeEnemySpawners <= 0 && started &&
+            activeWaveSpawners <= 0 && enemies.head == null) victory = true;
 
         // Update global health of all enemies in a handy health bar.
         if (healthBar != null)
@@ -147,9 +154,9 @@ public class EnemySpawnerController : MonoBehaviour
     }
 
     // Getter to see if all enemies were killed.
-    public bool Wiped()
+    public bool Victorious()
     {
-        return wiped;
+        return victory;
     }
 
     // Helper method to start spawning all waves.
@@ -161,22 +168,17 @@ public class EnemySpawnerController : MonoBehaviour
             return;
         }
 
-        if (currentCoroutine != null)
-        {
-            Debug.Log("Busy spawning enemies, please try again later.");
-            return;
-        }
-
-        currentCoroutine = StartCoroutine(SpawnWaves());
+        StartCoroutine(SpawnWaves());
         started = true;
     }
 
     // Coroutine to spawn each wave.
     private IEnumerator SpawnWaves()
     {
+        activeWaveSpawners++;
         for (; currentWave < enemyWaves.Length; currentWave++)
         {
-            if (waveCountText != null) waveCountText.text = string.Format("{0:00}", currentWave + 1);
+            if (waveCountText != null) waveCountText.text = string.Format("{0:00}", enemyWaves.Length - (currentWave + 1));
             currentWaveMaxTime = enemyWaves[currentWave].nextWaveDelay;
 
             NextWave();
@@ -188,8 +190,7 @@ public class EnemySpawnerController : MonoBehaviour
         }
 
         yield return new WaitForSeconds(5.0f);
-        doneSpawning = true;
-        currentCoroutine = null;
+        activeWaveSpawners--;
     }
 
     // Helper method to start spawning the enemies of the current wave.
@@ -202,6 +203,7 @@ public class EnemySpawnerController : MonoBehaviour
     // Coroutine to actually spawn those enemies.
     private IEnumerator SpawnEnemies()
     {
+        activeEnemySpawners++;
         enemies.maxHealth = enemies.health;
         float delay = enemyWaves[currentWave].spawnDuration / enemyWaves[currentWave].enemyCount;
 
@@ -210,6 +212,8 @@ public class EnemySpawnerController : MonoBehaviour
             enemies.Push(SpawnEnemy());
             yield return new WaitForSeconds(delay);
         }
+
+        activeEnemySpawners--;
     }
 
     // Helper method to spawn a single enemy and add it to our linked list.
@@ -241,4 +245,20 @@ public class EnemySpawnerController : MonoBehaviour
             Gizmos.DrawSphere(point, 0.25f);
         }
     }
+
+    /*
+    // Debug messages, testing purposes only.
+    void OnGUI()
+    {
+        int w = Screen.width, h = Screen.height;
+
+        GUIStyle style = new GUIStyle();
+
+        Rect rect = new Rect(w / 2, h / 16, 100, 25);
+        style.alignment = TextAnchor.UpperCenter;
+        style.fontSize = h * 5 / 100;
+        style.normal.textColor = new Color(1.0f, 1.0f, 1.0f, 1.0f);
+        string text = "Empty enemy list: " + (enemies.head == null).ToString();
+        GUI.Label(rect, text, style);
+    }*/
 }
