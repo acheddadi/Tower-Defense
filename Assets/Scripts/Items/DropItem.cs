@@ -31,9 +31,19 @@ public class DropItem : MonoBehaviour
     {
         if (itemPrefabs != null)
         {
-            Vector2 dropCircle = Random.insideUnitCircle.normalized * dropRadius;
-            Vector3 spawnPoint = new Vector3(transform.position.x + dropCircle.x, transform.position.y, transform.position.z + dropCircle.y);
-            Instantiate(itemPrefabs[Random.Range(0, itemPrefabs.Length)], spawnPoint, Quaternion.identity);
+            RaycastHit raycastHit = new RaycastHit();
+            Vector3 dropCircle = new Vector3();
+            do
+            {
+                dropCircle = Random.insideUnitCircle.normalized * dropRadius;
+
+            } while (!Physics.Raycast(
+                transform.position + Vector3.up * 3.0f + dropCircle, 
+                Vector3.down, out raycastHit, Mathf.Infinity, 
+                LayerMask.GetMask("Level")
+                )
+            );
+            Instantiate(itemPrefabs[Random.Range(0, itemPrefabs.Length)], raycastHit.point, Quaternion.identity);
         }
     }
 }
