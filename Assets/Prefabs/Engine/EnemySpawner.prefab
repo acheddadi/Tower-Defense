@@ -50,14 +50,14 @@ MonoBehaviour:
   - {x: -4, y: 0, z: 4}
   - {x: -4, y: 0, z: -4}
   enemyWaves:
-  - nextWaveDelay: 60
+  - nextWaveDelay: 30
     enemyCount: 4
     spawnDuration: 10
-  - nextWaveDelay: 60
-    enemyCount: 8
+  - nextWaveDelay: 40
+    enemyCount: 6
     spawnDuration: 20
   - nextWaveDelay: 0
-    enemyCount: 10
+    enemyCount: 8
     spawnDuration: 15
   healthBar: {fileID: 0}
   waveTimer: {fileID: 0}
