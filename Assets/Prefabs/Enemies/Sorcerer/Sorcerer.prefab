@@ -164,6 +164,7 @@ Transform:
   m_Children:
   - {fileID: 414789398739298656}
   - {fileID: 9067172249226739723}
+  - {fileID: 1616491338757275299}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -266,6 +267,9 @@ MonoBehaviour:
   defensePoints: 0
   maxHealth: 40
   healthBar: {fileID: 9067172249226739722}
+  spriteRenderer: {fileID: 0}
+  deathSFX: 0
+  loseHealthSFX: 0
 --- !u!114 &6612968973087706476
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -283,6 +287,40 @@ MonoBehaviour:
   - {fileID: 3266323313498492628, guid: ea27a85e40fa0f74ebd12d25eb4d5b14, type: 3}
   - {fileID: 3266323313498492628, guid: ea27a85e40fa0f74ebd12d25eb4d5b14, type: 3}
   dropRadius: 0.5
+--- !u!1001 &1616491338756875297
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 6504806108844515877}
+    m_Modifications:
+    - target: {fileID: 100002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+      propertyPath: m_Name
+      value: BlobShadowProjector
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+--- !u!4 &1616491338757275299 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400002, guid: 28a5e79925e3ce04a82856c16a572cbe, type: 3}
+  m_PrefabInstance: {fileID: 1616491338756875297}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2473554156274503172
 PrefabInstance:
   m_ObjectHideFlags: 0
