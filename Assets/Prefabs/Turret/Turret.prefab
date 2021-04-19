@@ -212,7 +212,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf90965883de86b4e88eb9726473c1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyPrefab: {fileID: 0}
+  destroyPrefab: {fileID: 4833300419262513312, guid: 5dc097f2f01664841bb8a34870d6b900, type: 3}
   defensePoints: 0
   maxHealth: 100
   healthBar: {fileID: 8963167227045727840}
