@@ -92,7 +92,7 @@ public class TurretPlacement : MonoBehaviour
     public void PlaceTurretOverlay()
     {
         if (isPlacing) return;
-
+        AudioController.PlacingTurret();
         isPlacing = true;
         if (particleSystems != null)
             for (int i = 0; i < particleSystems.Length; i++) particleSystems[i].Play();
@@ -111,6 +111,7 @@ public class TurretPlacement : MonoBehaviour
         
         if (isValidPlacement)
         {
+            AudioController.PlaceTurret();
             GameObject turret = Instantiate(turretPrefab);
             turret.transform.position = transform.position;
             turret.transform.rotation = transform.rotation;

@@ -18,6 +18,8 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioClip electricalHurtSound;
     [SerializeField] private AudioClip crystalHurtSound;
     [SerializeField] private AudioClip pickUpSound;
+    [SerializeField] private AudioClip placingTurret;
+    [SerializeField] private AudioClip placeTurret;
     [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip explosionSound;
     [SerializeField] private AudioClip electricalExplosionSound;
@@ -90,6 +92,28 @@ public class AudioController : MonoBehaviour
         }
 
         instance.sfxSource.PlayOneShot(instance.pickUpSound);
+    }
+
+    public static void PlacingTurret()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.sfxSource.PlayOneShot(instance.placingTurret);
+    }
+
+    public static void PlaceTurret()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.sfxSource.PlayOneShot(instance.placeTurret);
     }
 
     public static void Shoot()

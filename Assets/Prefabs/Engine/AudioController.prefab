@@ -44,7 +44,7 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
-  m_Pitch: 0.75
+  m_Pitch: 1
   Loop: 0
   Mute: 0
   Spatialize: 0
@@ -179,11 +179,13 @@ MonoBehaviour:
   electricalHurtSound: {fileID: 8300000, guid: da3869af44ab2e144913db282b3dd256, type: 3}
   crystalHurtSound: {fileID: 8300000, guid: c26b5be83762f604c8c22699ea8cdaae, type: 3}
   pickUpSound: {fileID: 8300000, guid: d37ae95f9db2b9b4694b60fdd694ab6b, type: 3}
+  placingTurret: {fileID: 8300000, guid: cae0368c1f4a7254caa78e5829740d44, type: 3}
+  placeTurret: {fileID: 8300000, guid: 3c77334e99cd43040af0d1491251fe8d, type: 3}
   shootSound: {fileID: 8300000, guid: e9427a4d62f502c4fb600f2705bb539c, type: 3}
   explosionSound: {fileID: 8300000, guid: af73cf61510c3ee4a94e26b92c637c51, type: 3}
   electricalExplosionSound: {fileID: 8300000, guid: 2cf7bb2c6165a2841a606891450f606e, type: 3}
   crystalShatter: {fileID: 8300000, guid: 546ec755d1ee18b4e908c95499f42152, type: 3}
-  uiSound: {fileID: 8300000, guid: 073a4a27112aacf48984fc92dc1f1403, type: 3}
+  uiSound: {fileID: 8300000, guid: a4cfbb93f9a8cf24ba419f0a2fce97a1, type: 3}
   incomingSound: {fileID: 8300000, guid: 4c77199cf0d534046942aec0b51eadf2, type: 3}
   jingleWinSound: {fileID: 8300000, guid: 16f23a60faf1b09499c4454903544e61, type: 3}
   jingleLoseSound: {fileID: 8300000, guid: 1f42bfed0ae936e48b54000a6d69852a, type: 3}
