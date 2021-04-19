@@ -217,6 +217,9 @@ MonoBehaviour:
   defensePoints: 0
   maxHealth: 30
   healthBar: {fileID: 0}
+  spriteRenderer: {fileID: 5947625393234072982}
+  deathSFX: 0
+  loseHealthSFX: 1
 --- !u!1001 &7781934142070438022
 PrefabInstance:
   m_ObjectHideFlags: 0

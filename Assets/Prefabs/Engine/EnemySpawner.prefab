@@ -62,3 +62,4 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   waveTimer: {fileID: 0}
   waveCountText: {fileID: 0}
+  incomingPrefab: {fileID: 8508805908726170052, guid: eeb5f62ecf95eb047967bdef994aae02, type: 3}

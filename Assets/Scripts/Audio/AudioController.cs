@@ -15,10 +15,17 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioSource sfxSource;
     [SerializeField] private AudioClip attackSound;
     [SerializeField] private AudioClip hurtSound;
+    [SerializeField] private AudioClip electricalHurtSound;
+    [SerializeField] private AudioClip crystalHurtSound;
     [SerializeField] private AudioClip pickUpSound;
     [SerializeField] private AudioClip shootSound;
     [SerializeField] private AudioClip explosionSound;
+    [SerializeField] private AudioClip electricalExplosionSound;
+    [SerializeField] private AudioClip crystalShatter;
     [SerializeField] private AudioClip uiSound;
+    [SerializeField] private AudioClip incomingSound;
+    [SerializeField] private AudioClip jingleWinSound;
+    [SerializeField] private AudioClip jingleLoseSound;
 
     // Singleton pattern so that all objects can access this instance.
     private static AudioController instance;
@@ -50,6 +57,28 @@ public class AudioController : MonoBehaviour
         }
 
         instance.sfxSource.PlayOneShot(instance.hurtSound);
+    }
+
+    public static void ElectricalHurt()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.sfxSource.PlayOneShot(instance.electricalHurtSound);
+    }
+
+    public static void CrystalHurt()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.sfxSource.PlayOneShot(instance.crystalHurtSound);
     }
 
     public static void PickUp()
@@ -85,6 +114,28 @@ public class AudioController : MonoBehaviour
         instance.sfxSource.PlayOneShot(instance.explosionSound);
     }
 
+    public static void ElectricalExplode()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.sfxSource.PlayOneShot(instance.electricalExplosionSound);
+    }
+
+    public static void CrystalShatter()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.sfxSource.PlayOneShot(instance.crystalShatter);
+    }
+
     public static void Confirm()
     {
         if (instance == null)
@@ -94,5 +145,40 @@ public class AudioController : MonoBehaviour
         }
 
         instance.sfxSource.PlayOneShot(instance.uiSound);
+    }
+
+    public static void Incoming()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.sfxSource.PlayOneShot(instance.incomingSound);
+    }
+
+    public static void Win()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.bgmSource.Stop();
+        instance.sfxSource.PlayOneShot(instance.jingleWinSound);
+    }
+
+    public static void Lose()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.bgmSource.Stop();
+        instance.sfxSource.PlayOneShot(instance.jingleLoseSound);
     }
 }

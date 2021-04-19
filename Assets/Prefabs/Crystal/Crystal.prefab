@@ -76,10 +76,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf90965883de86b4e88eb9726473c1ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destroyPrefab: {fileID: 0}
+  destroyPrefab: {fileID: 16881028168411573, guid: 67ca0568a186e934a955d90a560c0b97, type: 3}
   defensePoints: 10
   maxHealth: 100
   healthBar: {fileID: 0}
+  spriteRenderer: {fileID: 0}
+  deathSFX: 2
+  loseHealthSFX: 1
 --- !u!114 &7839771124975181558
 MonoBehaviour:
   m_ObjectHideFlags: 0

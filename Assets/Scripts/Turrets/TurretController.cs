@@ -36,6 +36,8 @@ public class TurretController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (GameController.GameOver()) return;
+
         // If there are enemies surrounding me.
         if (inboundEnemy.First != null)
         {

@@ -216,6 +216,9 @@ MonoBehaviour:
   defensePoints: 0
   maxHealth: 100
   healthBar: {fileID: 8963167227045727840}
+  spriteRenderer: {fileID: 0}
+  deathSFX: 1
+  loseHealthSFX: 1
 --- !u!1 &2545782200521803732
 GameObject:
   m_ObjectHideFlags: 0

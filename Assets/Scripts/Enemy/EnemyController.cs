@@ -12,6 +12,7 @@
 // --------------------------------------------------------
 using UnityEngine;
 using UnityEngine.AI;
+using System.Collections;
 
 [RequireComponent(typeof(NavMeshAgent))]
 [RequireComponent(typeof(HealthController))]
@@ -40,7 +41,7 @@ public class EnemyController : MonoBehaviour
     private void Update()
     {
         // If Crystal was destroyed, have all enemies stop all movement.
-        if (CrystalController.GetInstance() == null)
+        if (GameController.GameOver())
         {
             if (navMeshAgent.velocity.magnitude > 0.0f) DelayReaction();
             return;
@@ -74,7 +75,7 @@ public class EnemyController : MonoBehaviour
 
                     // Player sound and remove health from target.
                     AudioController.Attack();
-                    attackTarget.LoseHealth(attackStrength);
+                    StartCoroutine(DelayedAttack(0.2f));
                     attackTimer = 0.0f;
                 }
 
@@ -138,5 +139,11 @@ public class EnemyController : MonoBehaviour
                 attackTarget = target;
             }
         }
+    }
+
+    private IEnumerator DelayedAttack(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        if (attackTarget != null) attackTarget.LoseHealth(attackStrength);
     }
 }

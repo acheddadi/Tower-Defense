@@ -11,6 +11,8 @@ using UnityEngine;
 
 public class GameController : MonoBehaviour
 {
+    private static GameController instance;
+
     [SerializeField] [TextArea] private string welcomeMessage;
     [SerializeField] [TextArea] private string winMessage;
     [SerializeField] [TextArea] private string loseMessage;
@@ -22,6 +24,12 @@ public class GameController : MonoBehaviour
 
     private GameObject currentWindow;
     private int currentState = 0;
+
+    private void Awake()
+    {
+        if (instance == null) instance = this;
+        else Destroy(gameObject);
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -52,14 +60,16 @@ public class GameController : MonoBehaviour
 
                 else if (enemySpawnerController.Victorious())
                 {
-                    currentWindow = CreateWindow(winMessage);
+                    AudioController.Win();
+                    currentWindow = CreateWindow(winMessage, 0.5f);
                     DisableInput();
                     currentState++;
                 }
 
-                else if(player == null)
+                else if(player == null || CrystalController.GetInstance() == null)
                 {
-                    currentWindow = CreateWindow(loseMessage);
+                    AudioController.Lose();
+                    currentWindow = CreateWindow(loseMessage, 0.5f);
                     DisableInput();
                     currentState++;
                 }
@@ -90,6 +100,14 @@ public class GameController : MonoBehaviour
         return window;
     }
 
+    private GameObject CreateWindow(string message, float delay)
+    {
+        GameObject window = Instantiate(windowPrefab);
+        window.GetComponent<WindowController>().SetDelay(delay);
+        window.GetComponent<WindowController>().SetMessage(message);
+        return window;
+    }
+
     // Helper method to disable user input.
     private void DisableInput()
     {
@@ -112,5 +130,12 @@ public class GameController : MonoBehaviour
         #if UNITY_EDITOR
                 UnityEditor.EditorApplication.isPlaying = false;
         #endif
+    }
+
+    public static  bool GameOver()
+    {
+        if (instance != null) return instance.currentState > 1;
+
+        throw new System.Exception("No instance of GameOver exists.");
     }
 }

@@ -7,6 +7,7 @@
 // and allow it to take damage, recover health or die.
 // --------------------------------------------------------
 using UnityEngine;
+using System.Collections;
 
 public class HealthController : MonoBehaviour
 {
@@ -14,8 +15,14 @@ public class HealthController : MonoBehaviour
     [SerializeField] [Range(0.0f, 10.0f)] private float defensePoints = 0.0f;
     [SerializeField] [Range(0.0f, 100.0f)] private float maxHealth = 100.0f;
     [SerializeField] private HealthBar healthBar;
+    [SerializeField] private SpriteRenderer spriteRenderer;
+
+    private enum DeathSFX { NORMAL, EXPLODE, SHATTER }
+    [SerializeField] private DeathSFX deathSFX = DeathSFX.NORMAL;
+    [SerializeField] private bool loseHealthSFX = false;
 
     private float health;
+    private Coroutine animationCoroutine;
 
     private void Awake()
     {
@@ -30,6 +37,22 @@ public class HealthController : MonoBehaviour
         this.health -= health;
         this.health = Mathf.Max(this.health, 0.0f);
 
+        if (loseHealthSFX && this.health > 0.0f) 
+        {
+            switch (deathSFX)
+            {
+                case DeathSFX.NORMAL:
+                    AudioController.Hurt();
+                    break;
+                case DeathSFX.EXPLODE:
+                    AudioController.ElectricalHurt();
+                    break;
+                case DeathSFX.SHATTER:
+                    AudioController.CrystalHurt();
+                    break;
+            }
+        }
+        if (spriteRenderer != null) animationCoroutine = StartCoroutine(DamageAnimation());
         if (healthBar != null) healthBar.SetMainValue(this.health, maxHealth);
         if (this.health == 0.0f) Die();
     }
@@ -47,7 +70,10 @@ public class HealthController : MonoBehaviour
     // Helper method to destroy the player object.
     private void Die()
     {
-        AudioController.Hurt();
+        if (deathSFX == DeathSFX.NORMAL) AudioController.Hurt();
+        else if (deathSFX == DeathSFX.EXPLODE) AudioController.ElectricalExplode();
+        else if (deathSFX == DeathSFX.SHATTER) AudioController.CrystalShatter();
+
         Debug.Log(name + " has fallen.");
         if (destroyPrefab != null)
             Instantiate(destroyPrefab, transform.position, transform.rotation);
@@ -66,4 +92,13 @@ public class HealthController : MonoBehaviour
     {
         return maxHealth;
     }
+
+    private IEnumerator DamageAnimation()
+    {
+        spriteRenderer.color = Color.red;
+        yield return new WaitForSeconds(0.1f);
+        spriteRenderer.color = Color.white;
+        animationCoroutine = null;
+    }
+
 }

@@ -114,6 +114,7 @@ public class EnemySpawnerController : MonoBehaviour
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private HealthBar waveTimer;
     [SerializeField] private Text waveCountText;
+    [SerializeField] private GameObject incomingPrefab;
 
     private int activeWaveSpawners = 0;
     private int activeEnemySpawners = 0;
@@ -129,6 +130,7 @@ public class EnemySpawnerController : MonoBehaviour
 
     private void Update()
     {
+        if (GameController.GameOver()) Destroy(gameObject);
         // If all enemies were defeated, set wiped flag to true.
         if (!victory &&  activeEnemySpawners <= 0 && started &&
             activeWaveSpawners <= 0 && enemies.head == null) victory = true;
@@ -196,7 +198,15 @@ public class EnemySpawnerController : MonoBehaviour
     // Helper method to start spawning the enemies of the current wave.
     private void NextWave()
     {
-        if (currentWave < enemyWaves.Length) StartCoroutine(SpawnEnemies());
+        if (currentWave < enemyWaves.Length) 
+        {
+            if (incomingPrefab != null && currentWave > 0)
+            {
+                AudioController.Incoming();
+                Instantiate(incomingPrefab);
+            }
+            StartCoroutine(SpawnEnemies());
+        }
         else Debug.Log("No more waves left to spawn.");
     }
 

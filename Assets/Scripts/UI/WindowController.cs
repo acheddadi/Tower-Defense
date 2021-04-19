@@ -43,6 +43,19 @@ public class WindowController : MonoBehaviour
         customMessage = message;
     }
 
+    public void SetDelay(float delay)
+    {
+        StartCoroutine(DelayedStart(delay));
+    }
+
+    private IEnumerator DelayedStart(float delay)
+    {
+        yield return new WaitForEndOfFrame();
+        animator.speed = 0.0f;
+        yield return new WaitForSeconds(delay);
+        animator.speed = 1.0f;
+    }
+
     // Helper method to let us know that the window is ready to be interacted with.
     public void Ready()
     {
