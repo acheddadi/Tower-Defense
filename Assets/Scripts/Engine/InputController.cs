@@ -21,6 +21,12 @@ public class InputController : MonoBehaviour
     private bool actionButton_D = false;
     private bool actionButton_U = false;
 
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
+
     // Update is called once per frame
     void Update()
     {
