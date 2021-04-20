@@ -1,3 +1,10 @@
+// -------------------------------------------------------
+// ASSIGNMENT#3 - MEDIUM FIDELITY PROTOTYPE
+// Written by: Ali Cheddadi
+// Date: MARCH 18, 2021
+// This script is used to scroll texture on its material to give
+// the illusion of motion i.e. moving water.
+// --------------------------------------------------------
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
