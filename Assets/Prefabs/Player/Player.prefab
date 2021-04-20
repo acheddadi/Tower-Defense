@@ -200,7 +200,7 @@ MonoBehaviour:
   turretPlacement: {fileID: 2454310808657391526}
   turretPlacementDistance: 0.5
   turretPlacementSpeed: 10
-  availableResources: 3
+  availableResources: 2
   availableResourcesText: {fileID: 0}
 --- !u!114 &5947625393719503849
 MonoBehaviour:

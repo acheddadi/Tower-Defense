@@ -1342,6 +1342,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 425248662, guid: 2516e7653eab3cd4b8cd8cde6f9f5bfb, type: 3}
+      propertyPath: maxOffset
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 425248662, guid: 2516e7653eab3cd4b8cd8cde6f9f5bfb, type: 3}
+      propertyPath: cycleSpeed
+      value: 0.25
+      objectReference: {fileID: 0}
     - target: {fileID: 7839771124975181544, guid: 2516e7653eab3cd4b8cd8cde6f9f5bfb, type: 3}
       propertyPath: m_RootOrder
       value: 3
@@ -1394,7 +1402,8 @@ PrefabInstance:
       propertyPath: healthBar
       value: 
       objectReference: {fileID: 1867815638}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 425248662, guid: 2516e7653eab3cd4b8cd8cde6f9f5bfb, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2516e7653eab3cd4b8cd8cde6f9f5bfb, type: 3}
 --- !u!33 &8416108443540032684
 MeshFilter:

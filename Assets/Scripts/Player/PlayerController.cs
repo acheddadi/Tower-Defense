@@ -98,7 +98,11 @@ public class PlayerController : MonoBehaviour
     // Helper method used by our input manager when holding space bar, places an overlay of the turret.
     public void HoldTurretPlacement()
     {
-        if (availableResources == 0) return;
+        if (availableResources == 0) 
+        {
+            AudioController.Deny();
+            return;
+        }
 
         isPlacingTurret = true;
         turretPlacement.PlaceTurretOverlay();

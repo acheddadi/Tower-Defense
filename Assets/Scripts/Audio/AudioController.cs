@@ -25,6 +25,7 @@ public class AudioController : MonoBehaviour
     [SerializeField] private AudioClip electricalExplosionSound;
     [SerializeField] private AudioClip crystalShatter;
     [SerializeField] private AudioClip uiSound;
+    [SerializeField] private AudioClip uiNegativeSound;
     [SerializeField] private AudioClip incomingSound;
     [SerializeField] private AudioClip jingleWinSound;
     [SerializeField] private AudioClip jingleLoseSound;
@@ -169,6 +170,16 @@ public class AudioController : MonoBehaviour
         }
 
         instance.sfxSource.PlayOneShot(instance.uiSound);
+    }
+    public static void Deny()
+    {
+        if (instance == null)
+        {
+            Debug.LogError("Instance of AudioController does not exist!");
+            return;
+        }
+
+        instance.sfxSource.PlayOneShot(instance.uiNegativeSound);
     }
 
     public static void Incoming()

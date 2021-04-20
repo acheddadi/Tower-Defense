@@ -46,7 +46,11 @@ MonoBehaviour:
   welcomeMessage: "This game was developed for Dr. Miguel Garcia-Ruiz's Game Software
     Engineering course.\n\nYour objective is to protect the Crystal from waves of
     enemy attacks. \n\nCollect resources from downed enemies to build defensive turrets
-    throughout the level.\n\nImportant game information is listed down below. Enjoy!"
+    throughout the level.\n\nImportant game information is listed down below."
+  tutorialMessage: "To move the player, use the W, A, S, D keys or Arrows keys.\n\nTo
+    begin placing turrets, hold down the space bar and move your character. \n\nRelease
+    the space bar once you are satisfied with the turret's placement to place it.
+    \n\nEnjoy!"
   winMessage: 'Congratulations! You have successfully defended the crystal!
 
 

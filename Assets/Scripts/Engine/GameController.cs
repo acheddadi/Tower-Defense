@@ -14,6 +14,7 @@ public class GameController : MonoBehaviour
     private static GameController instance;
 
     [SerializeField] [TextArea] private string welcomeMessage;
+    [SerializeField] [TextArea] private string tutorialMessage;
     [SerializeField] [TextArea] private string winMessage;
     [SerializeField] [TextArea] private string loseMessage;
     [SerializeField] [TextArea] private string creditsMessage;
@@ -23,7 +24,7 @@ public class GameController : MonoBehaviour
     [SerializeField] private GameObject windowPrefab;
 
     private GameObject currentWindow;
-    private int currentState = 0;
+    private int currentState = -1;
 
     private void Awake()
     {
@@ -45,7 +46,16 @@ public class GameController : MonoBehaviour
         switch (currentState)
         {
             // Welcome Message
-            case 0:     
+            case -1:     
+                if (currentWindow == null)
+                {
+                    currentWindow = CreateWindow(tutorialMessage);
+                    currentState++;
+                }
+                break;
+
+            // Tutorial Message
+            case 0:
                 if (currentWindow == null)
                 {
                     EnableInput();
